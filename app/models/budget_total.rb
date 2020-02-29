@@ -1,0 +1,2 @@
+class BudgetTotal < ApplicationRecord
+end
