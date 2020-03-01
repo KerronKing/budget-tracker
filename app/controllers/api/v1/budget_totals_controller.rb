@@ -30,7 +30,7 @@ module Api
       private
 
       def budget_total_params
-        params.require(budget_total).permit(:income, :rent, :transport, :food,
+        params.require(budget_total).permit(:date, :rent, :transport, :food,
                                             :entertainment, :utilities, :other)
       end
     end

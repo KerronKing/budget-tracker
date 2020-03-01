@@ -22,7 +22,7 @@ module Api
       private
 
       def budget_params
-        params.require(budget).permit(:start_date, :end_date)
+        params.require(budget).permit(:start_date, :end_date, :income)
       end
     end
   end

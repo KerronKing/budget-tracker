@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_02_29_165816) do
   enable_extension "plpgsql"
 
   create_table "budget_totals", force: :cascade do |t|
-    t.integer "budget_id"
-    t.integer "income"
+    t.bigint "budget_id", null: false
+    t.date "date"
     t.integer "rent"
     t.integer "transport"
     t.integer "food"
@@ -26,14 +26,17 @@ ActiveRecord::Schema.define(version: 2020_02_29_165816) do
     t.integer "other"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_id"], name: "index_budget_totals_on_budget_id"
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.integer "user_id"
     t.date "start_time"
     t.date "end_time"
+    t.integer "income"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,4 +52,6 @@ ActiveRecord::Schema.define(version: 2020_02_29_165816) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "budget_totals", "budgets"
+  add_foreign_key "budgets", "users"
 end
