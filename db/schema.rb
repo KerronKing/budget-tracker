@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_02_29_165816) do
   enable_extension "plpgsql"
 
   create_table "budget_totals", force: :cascade do |t|
-    t.integer "budget_id"
-    t.integer "income"
+    t.bigint "budget_id", null: false
+    t.date "date"
     t.integer "rent"
     t.integer "transport"
     t.integer "food"
@@ -26,27 +26,16 @@ ActiveRecord::Schema.define(version: 2020_02_29_165816) do
     t.integer "other"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_id"], name: "index_budget_totals_on_budget_id"
   end
 
   create_table "budgets", force: :cascade do |t|
-    t.integer "user_id"
-    t.date "start_time"
-    t.date "end_time"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "income"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
+  add_foreign_key "budget_totals", "budgets"
 end

@@ -11,3 +11,4 @@ files:
     - "config/*"
     - "Guardfile"
     - "Rakefile"
+    - "*/rails_helper.rb"

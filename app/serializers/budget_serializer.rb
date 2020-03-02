@@ -1,5 +1,4 @@
 class BudgetSerializer < ActiveModel::Serializer
-  attributes :id, :start_date, :end_date
-  belongs_to :user
-  has_one :budget_total
+  attributes :id, :start_date, :end_date, :income
+  has_many :budget_totals
 end
