@@ -10,12 +10,22 @@ RSpec.describe 'Budgets API', type: :request do
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
     end
+
+    it 'returns budgets' do
+      expect(json).not_to be_empty
+      expect(json.size).to eq(5)
+    end
   end
 
   describe 'GET /api/v1/budgets/:id' do
     before(:each) { get "/api/v1/budgets/#{budget_id}" }
 
     context 'when the budget record exists' do
+      it 'returns the budget' do
+        expect(json).not_to be_empty
+        expect(json['id']).to eq(budget_id)
+      end
+
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
@@ -45,6 +55,10 @@ RSpec.describe 'Budgets API', type: :request do
     
     context 'when the request is valid' do
       before(:each) { post '/api/v1/budgets', params: { budget: valid_attributes } }
+
+      it 'creates a budget' do
+        expect(json['start_date']).to eq('2020-03-01')
+      end
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
