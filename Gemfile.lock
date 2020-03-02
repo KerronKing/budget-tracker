@@ -75,9 +75,6 @@ GEM
     erubi (1.9.0)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.11.1)
-      factory_bot (~> 4.11.1)
-      railties (>= 3.0.0)
     faker (2.10.2)
       i18n (>= 1.6, < 2)
     ffi (1.12.2)
@@ -220,7 +217,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   database_cleaner
-  factory_bot_rails (~> 4.0)
+  factory_bot
   faker
   guard-rspec
   listen (>= 3.0.5, < 3.2)

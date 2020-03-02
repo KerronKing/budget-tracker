@@ -30,6 +30,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "guard-rspec"
   gem "rspec-rails"
+  gem 'faker'
 end
 
 group :development do
@@ -41,8 +42,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'factory_bot_rails', '~> 4.0'
-  gem 'faker'
+  gem 'factory_bot'
   gem 'database_cleaner'
 end
 

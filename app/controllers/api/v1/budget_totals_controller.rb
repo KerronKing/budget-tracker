@@ -1,11 +1,20 @@
 class Api::V1::BudgetTotalsController < ApplicationController
+  
   def new
-    @budget_total = @budget.budget_total.build
+    @budget = Budget.find(params[:budget_id])
+    @budget_total = @budget.budget_totals.build
+    render json: @budget_total
+  end
+
+  def show
+    @budget = Budget.find(params[:budget_id])
+    @budget_total = @budget.budget_totals.find_by(id: params[:id])
     render json: @budget_total
   end
 
   def create
-    @budget_total = @budget.budget_total.build(budget_total_params)
+    @budget = Budget.find(params[:budget_id])
+    @budget_total = @budget.budget_totals.build(budget_total_params)
     if @budget_total.save
       render json: @budget_total, status: 200
     else
@@ -14,7 +23,8 @@ class Api::V1::BudgetTotalsController < ApplicationController
   end
 
   def update
-    if @budget.update
+    @budget_total = @budget.budget_totals.find_by(id: params[:id]) if @budget
+    if @budget_total.update(budget_total_params)
       render json: @budget_total, status: 200
     else
       render json: { errors: @budget_total.errors.full_messages }, status: 422
@@ -22,13 +32,15 @@ class Api::V1::BudgetTotalsController < ApplicationController
   end
 
   def destroy
+    @budget = Budget.find(params[:budget_id])
+    @budget_total = @budget.budget_totals.find_by(id: params[:id]) if @budget
     @budget_total.destroy
   end
 
   private
 
   def budget_total_params
-    params.require(budget_total).permit(:date, :rent, :transport, :food,
+    params.require(:budget_total).permit(:date, :rent, :transport, :food,
                                         :entertainment, :utilities, :other)
   end
 end
