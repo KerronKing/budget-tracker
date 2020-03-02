@@ -2,20 +2,22 @@ require 'rails_helper'
 
 RSpec.describe BudgetTotal, type: :model do
   let(:budget) { Budget.create(start_date: '2020-03-01', end_date: '2020-03-31', income: 7000) }
-  let(:budget_total) { budget.budget_totals.build(date: '2020-03-01', 
-                                              rent: 500, transport: 200, 
-                                              food: 400, entertainment: 50, 
-                                              utilities: 150, other: 10) }
+  let(:budget_total) do 
+    budget.budget_totals.build(date: '2020-03-01',
+                               rent: 500, transport: 200,
+                               food: 400, entertainment: 50, 
+                               utilities: 150, other: 10)
+  end
 
   it 'should not be blank' do
     expect(budget_total).to be_valid
   end
 
   it 'should have a date' do
-    budget = BudgetTotal.new(date: '', 
-      rent: 500, transport: 200, 
-      food: 400, entertainment: 50, 
-      utilities: 150, other: 10)
+    budget = BudgetTotal.new(date: '',
+                             rent: 500, transport: 200,
+                             food: 400, entertainment: 50,
+                             utilities: 150, other: 10)
     expect(budget).to_not be_valid
   end
 

@@ -1,5 +1,5 @@
 class Api::V1::BudgetTotalsController < ApplicationController
-  
+
   def new
     @budget = Budget.find(params[:budget_id])
     @budget_total = @budget.budget_totals.build
@@ -41,6 +41,6 @@ class Api::V1::BudgetTotalsController < ApplicationController
 
   def budget_total_params
     params.require(:budget_total).permit(:date, :rent, :transport, :food,
-                                        :entertainment, :utilities, :other)
+                                         :entertainment, :utilities, :other)
   end
 end
