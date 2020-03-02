@@ -43,8 +43,8 @@ RSpec.describe 'Budgets API', type: :request do
   describe 'POST /api/v1/budgets' do
     let(:valid_attributes) do
       {
-        start_date: '2020-03-01', 
-        end_date: '2020-03-31', 
+        start_date: '2020-03-01',
+        end_date: '2020-03-31',
         income: 7000
       }
     end
