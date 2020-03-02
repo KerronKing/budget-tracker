@@ -17,22 +17,24 @@ RSpec.describe 'Budget Totals API', type: :request do
   end
 
   describe 'POST /api/v1/budget/budget_id/budget_totals' do
-    let(:valid_attributes) do 
+    let(:valid_attributes) do
       {
-      date: '2020-03-01',
-      rent: 500,
-      transport: 200,
-      food: 400,
-      entertainment: 50,
-      utilities: 150,
-      other: 10
+        date: '2020-03-01',
+        rent: 500,
+        transport: 200,
+        food: 400,
+        entertainment: 50,
+        utilities: 150,
+        other: 10
       }
     end
 
-    let(:invalid_attributes) { {
-      date: '  '
-    } }
-    
+    let(:invalid_attributes) do
+      {
+        date: '  '
+      }
+    end
+
     context 'when the request is valid' do
       before(:each) { post "/api/v1/budgets/#{budget_id}/budget_totals", params: { budget_total: valid_attributes } }
 
