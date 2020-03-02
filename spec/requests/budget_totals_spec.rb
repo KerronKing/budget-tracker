@@ -16,7 +16,7 @@ RSpec.describe 'Budget Totals API', type: :request do
     end
 
     context 'when the record does not exist' do
-      let(:budget_total_id) { 100 }
+      let(:budget_total_id) { 10 }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -36,14 +36,14 @@ RSpec.describe 'Budget Totals API', type: :request do
     } }
 
     let(:invalid_attributes) { {
-      date: ' ',
+      date: '  ',
     } }
     
     context 'when the request is valid' do
       before(:each) { post "/api/v1/budgets/#{budget_id}/budget_totals", params: { budget_total: valid_attributes } }
 
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
     end
 
