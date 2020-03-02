@@ -4,7 +4,6 @@ class CreateBudgets < ActiveRecord::Migration[6.0]
       t.date :start_time
       t.date :end_time
       t.integer :income
-      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
