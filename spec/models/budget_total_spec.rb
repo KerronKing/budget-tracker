@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BudgetTotal, type: :model do
-  let(:budget) { Budget.create(start_date: '2020-03-01', end_date: '2020-03-31', income: 7000) }
+  let(:user) { User.create(name: 'Curtis', email: 'curtis@example.com') }
+  let(:budget) { user.budgets.build(start_date: '2020-03-01', end_date: '2020-03-31', income: 7000) }
   let(:budget_total) do
     budget.budget_totals.build(date: '2020-03-01',
                                rent: 500, transport: 200,

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Budgets API', type: :request do
-  let!(:budgets) { create_list(:budget, 5) }
+  let!(:user) { create(:user) }
+  let!(:budgets) { create_list(:budget, 5, user_id: user.id) }
   let(:budget_id) { budgets.first.id }
 
   describe 'GET /api/v1/budgets' do

@@ -11,7 +11,7 @@ class Api::V1::BudgetsController < ApplicationController
   end
 
   def create
-    @budget = current_user.budget.build(budget_params)
+    @budget = current_user.budgets.build(budget_params)
     if @budget.save
       render json: @budget, status: 201
     else
