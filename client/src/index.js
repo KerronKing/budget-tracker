@@ -1,15 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { render } from 'react-dom';
 import { createStore } from 'redux';
-import { Router, browserHistory } from 'react-router';
 import rootReducer from './reducers/index';
-import routes from './routes';
+import Root from './components/Root';
 import './index.css';
 
 const store = createStore(rootReducer);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
-  </Provider>, document.getElementById('root'));
+render(<Root store={store} />, document.getElementById('root'));
