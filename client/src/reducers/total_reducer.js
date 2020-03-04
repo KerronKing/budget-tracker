@@ -1,4 +1,5 @@
-import { CREATE_TOTAL, GET_TOTALS } from '../actions/index';
+import CREATE_TOTAL from '../actions/index';
+import GET_TOTALS from '../actions/index';
 
 const initialState = {
   all: [],

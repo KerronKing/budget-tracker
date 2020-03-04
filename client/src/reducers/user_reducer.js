@@ -1,4 +1,6 @@
-import { USER_SIGNUP, USER_LOGIN } from '../actions/index';
+import USER_SIGNUP from '../actions/index';
+import USER_LOGIN from '../actions/index';
+import USER_LOGOUT from '../actions/index';
 
 const initialState = {
   user: {},
