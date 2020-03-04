@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const USER_SIGNUP = 'USER_SIGNUP';
 const USER_LOGIN = 'USER_LOGIN';
+const USER_LOGOUT = 'USER_LOGOUT';
 const CREATE_BUDGET = 'CREATE_BUDGET';
 const CREATE_TOTAL = 'CREATE_TOTAL';
 const GET_BUDGETS = 'GET_BUDGETS';
@@ -21,6 +22,14 @@ const userLogin = () => {
   const request = axios.post(`${API_URL}/sessions`)
   return {
     type: USER_LOGIN,
+    payload: request
+  }
+};
+
+const userLogout = () => {
+  const request = axios.delete(`${API_URL}/sessions`)
+  return {
+    type: USER_LOGOUT,
     payload: request
   }
 };
@@ -58,6 +67,8 @@ const getTotals = () => {
 };
 
 export default {
-  userSignup, userLogin, createBudget, createTotal, getBudgets, getTotals,
+  userSignup, USER_SIGNUP, userLogin, USER_LOGIN, userLogout, USER_LOGOUT,
+  createBudget, CREATE_BUDGET, createTotal, CREATE_TOTAL,
+  getBudgets, GET_BUDGETS, getTotals, GET_TOTALS,
 }
 
