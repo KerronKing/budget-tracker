@@ -4,7 +4,17 @@ import { Link } from 'react-router-dom';
 class Login extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      name: '',
+      email: '',
+    }
+
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange() {
+
   }
 
   handleSubmit() {
@@ -17,6 +27,7 @@ class Login extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <input 
             type="text"
+            onChange={this.handleChange}
             className="user-input"
             id="nameInput"
             placeholder="Enter your name" 
@@ -24,6 +35,7 @@ class Login extends React.Component {
           />
           <input 
             type="email"
+            onChange={this.handleChange}
             className="user-input"
             id="emailInput"
             placeholder="Enter your email" 
