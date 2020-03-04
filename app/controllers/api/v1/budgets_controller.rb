@@ -11,6 +11,8 @@ class Api::V1::BudgetsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
+    log_in @user
     @budget = current_user.budgets.build(budget_params)
     if @budget.save
       render json: @budget, status: 201

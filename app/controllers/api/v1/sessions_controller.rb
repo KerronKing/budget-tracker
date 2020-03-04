@@ -1,12 +1,12 @@
 class Api::V1::SessionsController < ApplicationController
 
   def create
-    user = User.find_by(email: session_params[:email])
-    if user
-      log_in user
+    @user = User.find_by(email: session_params[:email])
+    if @user
+      log_in @user
       render json: {
         logged_in: true,
-        user
+        user: @user
       }
     else
       render json: {

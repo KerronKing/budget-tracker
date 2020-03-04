@@ -2,11 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'Budgets API', type: :request do
   let!(:user) { create(:user) }
+  before {
+    post "/api/v1/sessions",
+    params: {
+      user: { email: user.email }
+    }
+  }
   let!(:budgets) { create_list(:budget, 5, user_id: user.id) }
+  let(:user_id) { user.id }
   let(:budget_id) { budgets.first.id }
 
-  describe 'GET /api/v1/budgets' do
-    before(:each) { get '/api/v1/budgets' }
+  describe 'GET /api/v1/users/user_id/budgets' do
+    before(:each) { get '/api/v1/users/user_id/budgets' }
 
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
@@ -18,8 +25,8 @@ RSpec.describe 'Budgets API', type: :request do
     end
   end
 
-  describe 'GET /api/v1/budgets/:id' do
-    before(:each) { get "/api/v1/budgets/#{budget_id}" }
+  describe 'GET /api/v1/users/user_id/budgets/:id' do
+    before(:each) { get "/api/v1/users/#{user_id}/budgets/#{budget_id}" }
 
     context 'when the budget record exists' do
       it 'returns the budget' do
@@ -41,7 +48,7 @@ RSpec.describe 'Budgets API', type: :request do
     end
   end
 
-  describe 'POST /api/v1/budgets' do
+  describe 'POST /api/v1/users/user_id/budgets' do
     let(:valid_attributes) do
       {
         start_date: '2020-03-01',
@@ -59,7 +66,7 @@ RSpec.describe 'Budgets API', type: :request do
     end
 
     context 'when the request is valid' do
-      before(:each) { post '/api/v1/budgets', params: { budget: valid_attributes } }
+      before(:each) { post "/api/v1/users/#{user_id}/budgets", params: { budget: valid_attributes } }
 
       it 'creates a budget' do
         expect(json['start_date']).to eq('2020-03-01')
@@ -71,7 +78,7 @@ RSpec.describe 'Budgets API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before(:each) { post '/api/v1/budgets', params: { budget: invalid_attributes } }
+      before(:each) { post "/api/v1/users/#{user_id}/budgets", params: { budget: invalid_attributes } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -80,7 +87,7 @@ RSpec.describe 'Budgets API', type: :request do
   end
 
   describe 'DELETE /api/v1/budgets/:id' do
-    before { delete "/api/v1/budgets/#{budget_id}" }
+    before { delete "/api/v1/users/#{user_id}/budgets/#{budget_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
