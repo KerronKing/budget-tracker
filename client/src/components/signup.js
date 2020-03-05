@@ -19,15 +19,15 @@ class Signup extends React.Component {
 
   handleChange(e) {
     const { value, id } = e.target;
-    if (id === 'name') {
+    if (id === 'nameInput-signup') {
       this.setState({
         name: value,
       })
-    } else if (id === 'email') {
+    } else if (id === 'emailInput-signup') {
       this.setState({
         email: value,
       })
-    } else if (id === 'password') {
+    } else if (id === 'password-signup') {
       this.setState({
         password: value,
       })
@@ -53,9 +53,10 @@ class Signup extends React.Component {
     });
 
     this.setState({
-      start_date: '',
-      end_date: '',
-      income: 0,
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
     });
 
     name.value = '';

@@ -1,4 +1,3 @@
-import CREATE_BUDGET from '../actions/index';
 import GET_BUDGETS from '../actions/index';
 
 const initialState = {
@@ -8,11 +7,6 @@ const initialState = {
 
 const budgetReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_BUDGET:
-      return {
-        ...state,
-        budget: action.payload.data,
-      }
     case GET_BUDGETS:
       return {
         ...state,

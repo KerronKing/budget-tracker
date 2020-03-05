@@ -1,36 +1,18 @@
 import axios from 'axios';
 
 const USER_SIGNUP = 'USER_SIGNUP';
-const USER_LOGIN = 'USER_LOGIN';
-const USER_LOGOUT = 'USER_LOGOUT';
 const CREATE_BUDGET = 'CREATE_BUDGET';
 const CREATE_TOTAL = 'CREATE_TOTAL';
 const GET_BUDGETS = 'GET_BUDGETS';
 const GET_TOTALS = 'GET_TOTALS';
 
-const API_URL = 'http://localhost:3000/api/v1';
+const API_URL = 'http://localhost:3001/api/v1';
 
-const userSignup = props => {
-  const request = axios.post(`${API_URL}/users`, props)
+const userSignup = user => {
+  const request = axios.post(`${API_URL}/users`, user)
   return {
     type: USER_SIGNUP,
     payload: request,
-  }
-};
-
-const userLogin = props => {
-  const request = axios.post(`${API_URL}/login`, props)
-  return {
-    type: USER_LOGIN,
-    payload: request,
-  }
-};
-
-const userLogout = () => {
-  const request = axios.delete(`${API_URL}/logout`)
-  return {
-    type: USER_LOGOUT,
-    payload: request
   }
 };
 
@@ -68,8 +50,6 @@ const getTotals = () => {
 
 export default {
   userSignup, USER_SIGNUP,
-  userLogin, USER_LOGIN,
-  userLogout, USER_LOGOUT,
   createBudget, CREATE_BUDGET,
   createTotal, CREATE_TOTAL,
   getBudgets, GET_BUDGETS,

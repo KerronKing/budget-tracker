@@ -1,6 +1,6 @@
 import React from 'react';
+import { post } from 'axios';
 import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 
 class Login extends React.Component {
   constructor(props) {
@@ -8,25 +8,31 @@ class Login extends React.Component {
     this.state = {
       name: '',
       email: '',
+      password: '',
+      password_confirmation: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
   handleChange(e) {
     const { value, id } = e.target;
     if (id === 'nameInput') {
       this.setState({
-        name: value
+        name: value,
       })
     } else if (id === 'emailInput') {
       this.setState({
-        email: value
+        email: value,
+      })
+    } else if (id === 'password') {
+      this.setState({
+        password: value,
+      })
+    } else {
+      this.setState({
+        password_confirmation: value,
       })
     }
   }
@@ -34,9 +40,26 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const nameInput = document.getElementById('nameInput');
-    const emailInput = document.getElementById('emailInput');
+    const nameLogin = document.getElementById('nameInput');
+    const emailLogin = document.getElementById('emailInput');
+    const passwordLogin = document.getElementById('password');
+    const confirmationLogin = document.getElementById('confirmation');
 
+    const { email, password } = this.state;
+    const { history } = this.props;
+
+    const request = {"auth": {"email": email, "password": password}};
+    post('/api/v1/user_token', request)
+      .then(response => {
+        localStorage.setItem("jwt", response.data.jwt);
+        history.push("/");
+      })
+      .catch(error => console.log('error', error));
+
+    nameLogin.value = '';
+    emailLogin.value = '';
+    passwordLogin.value = '';
+    confirmationLogin.value = '';
   }
 
   render() {
@@ -59,11 +82,27 @@ class Login extends React.Component {
             placeholder="Enter your email" 
             required
           />
+          <input 
+            type="text"
+            onChange={this.handleChange}
+            className="user-input"
+            id="password"
+            placeholder="Enter your password" 
+            required
+          />
+          <input 
+            type="text"
+            onChange={this.handleChange}
+            className="user-input"
+            id="confirmation"
+            placeholder="Confirm your password" 
+            required
+          />
           <button type="submit">Login</button>
         </form>
         <div>
           <p>or</p>
-          <Link to='/sessions#new'>Sign Up</Link>
+          <Link to='/signup'>Sign Up</Link>
         </div>
       </div>
     )
