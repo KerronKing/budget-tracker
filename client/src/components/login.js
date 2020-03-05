@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 class Login extends React.Component {
   constructor(props) {
@@ -13,11 +14,28 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
-
+  static contextTypes = {
+    router: PropTypes.object,
   }
 
-  handleSubmit() {
+  handleChange(e) {
+    const { value, id } = e.target;
+    if (id === 'nameInput') {
+      this.setState({
+        name: value
+      })
+    } else if (id === 'emailInput') {
+      this.setState({
+        email: value
+      })
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('emailInput');
 
   }
 

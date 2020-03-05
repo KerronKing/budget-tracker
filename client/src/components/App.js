@@ -6,7 +6,7 @@ import UserProfile from './userprofile';
 import UserBudgets from './userbudgets';
 import NewBudget from './newbudget';
 import NewTotal from './newtotal';
-import BudgetTotal from './budget_total';
+import BudgetTotals from './budget_totals';
 import './App.css';
 import Footer from './footer';
 
@@ -22,10 +22,10 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/user" component={UserProfile} />
-          <Route exact path="/users/budgets" component={UserBudgets} />
+          <Route exact path="/users/:user_id/budgets" component={UserBudgets} />
           <Route exact path="/budgets/new" component={NewBudget} />
           <Route exact path="/budget_totals/new" component={NewTotal} />
-          <Route exact path="/budget_total" component={BudgetTotal} />
+          <Route exact path="/budgets/:budget_id/budget_totals" component={BudgetTotals} />
         </Switch>
       </div>
     );

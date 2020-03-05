@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Proptypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import getBudgets from '../actions/index';
 
@@ -17,7 +17,7 @@ class UserBudgets extends React.Component {
       <div>
         <h1>Your Budgets</h1>
         {budgets.map(budget => (
-          <Link to="/budget_total">
+          <Link to={"/budgets/" + budget.id + "/budget_totals"}>
             <div>
               <p>{budget.start_date}</p>
               <p>{budget.end_date}</p>
@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 UserBudgets.propTypes = {
-  getBudgets: Proptypes.func.isRequired,
+  getBudgets: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserBudgets);
