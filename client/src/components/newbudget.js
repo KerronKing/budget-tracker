@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
+import createBudget from '../actions/index';
 
 class NewBudget extends React.Component {
   constructor(props) {
@@ -13,12 +16,43 @@ class NewBudget extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
-
+  handleChange(e) {
+    const { value, id } = e.target;
+    if (id === 'start-date') {
+      this.setState({
+        start_date: value,
+      })
+    } else if (id === 'end-date') {
+      this.setState({
+        end_date: value,
+      })
+    } else {
+      this.setState({
+        income: value,
+      })
+    }
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
 
+    const startDate = document.getElementById('start-date');
+    const endDate = document.getElementById('end-date');
+    const incomeField = document.getElementById('income');
+
+    const { createBudget } = this.props;
+    const budget = { ...this.state };
+    createBudget(budget);
+
+    this.setState({
+      start_date: '',
+      end_date: '',
+      income: 0,
+    });
+
+    startDate.value = '';
+    endDate.value = '';
+    incomeField.value = '';
   }
 
   render() {
@@ -57,4 +91,12 @@ class NewBudget extends React.Component {
   }
 };
 
-export default NewBudget;
+const mapDispatchToProps = dispatch => ({
+  createBudget: budget => dispatch(createBudget(budget)),
+})
+
+NewBudget.propTypes = {
+  createBudget: Proptypes.func.isRequired,
+}
+
+export default connect(null, mapDispatchToProps)(NewBudget);
