@@ -11,7 +11,7 @@ const budgetReducer = (state = initialState, action) => {
     case CREATE_BUDGET:
       return {
         ...state,
-        all: action.payload.data,
+        budget: action.payload.data,
       }
     case GET_BUDGETS:
       return {

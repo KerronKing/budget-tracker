@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import createTotal from '../actions/index';
 
 class NewTotal extends React.Component {
@@ -172,7 +172,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 NewTotal.propTypes = {
-  createTotal: Proptypes.func.isRequired,
+  createTotal: PropTypes.func.isRequired,
 }
 
 export default connect(null, mapDispatchToProps)(NewTotal);

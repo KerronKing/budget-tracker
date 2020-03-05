@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import createBudget from '../actions/index';
 
 class NewBudget extends React.Component {
@@ -102,7 +102,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 NewBudget.propTypes = {
-  createBudget: Proptypes.func.isRequired,
+  createBudget: PropTypes.func.isRequired,
 }
 
 export default connect(null, mapDispatchToProps)(NewBudget);
