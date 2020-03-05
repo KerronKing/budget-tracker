@@ -20,6 +20,10 @@ class NewTotal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  static contextTypes = {
+    router: PropTypes.object,
+  }
+
   handleChange(e) {
     const { value, id } = e.target;
     if (id === 'date') {
@@ -66,7 +70,9 @@ class NewTotal extends React.Component {
 
     const { createTotal } = this.props;
     const total = { ...this.state };
-    createTotal(total);
+    createTotal(total).then(() => {
+      this.context.router.push('/');
+    });
 
     this.setState({
       date: '',
@@ -165,7 +171,7 @@ const mapDispatchToProps = dispatch => ({
   createTotal: total => dispatch(createTotal(total)),
 })
 
-NewBudget.propTypes = {
+NewTotal.propTypes = {
   createTotal: Proptypes.func.isRequired,
 }
 
