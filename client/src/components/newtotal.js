@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
+import createTotal from '../actions/index';
 
 class NewTotal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      date: '',
       rent: 0,
       transport: 0,
       food: 0,
@@ -16,12 +20,71 @@ class NewTotal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange() {
-
+  handleChange(e) {
+    const { value, id } = e.target;
+    if (id === 'date') {
+      this.setState({
+        date: value,
+      })
+    } else if (id === 'rent') {
+      this.setState({
+        rent: value,
+      })
+    } else if (id === 'transport') {
+      this.setState({
+        transport: value,
+      })
+    } else if (id === 'food') {
+      this.setState({
+        food: value,
+      })
+    } else if (id === 'entertainment') {
+      this.setState({
+        entertainment: value,
+      })
+    } else if (id === 'utilities') {
+      this.setState({
+        utilities: value,
+      })
+    } else if (id === 'other') {
+      this.setState({
+        other: value,
+      })
+    }
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
 
+    const date = document.getElementById('date');
+    const rent = document.getElementById('rent');
+    const transport = document.getElementById('transport');
+    const food = document.getElementById('food');
+    const entertainment = document.getElementById('entertainment');
+    const utilities = document.getElementById('utilities');
+    const other = document.getElementById('other');
+
+    const { createTotal } = this.props;
+    const total = { ...this.state };
+    createTotal(total);
+
+    this.setState({
+      date: '',
+      rent: 0,
+      transport: 0,
+      food: 0,
+      entertainment: 0,
+      utilities: 0,
+      other: 0,
+    });
+
+    date.value = '';
+    rent.value = '';
+    transport.value = '';
+    food.value = '';
+    entertainment.value = '';
+    utilities.value = '';
+    other.value = '';
   }
 
   render() {
@@ -98,4 +161,12 @@ class NewTotal extends React.Component {
   }
 };
 
-export default NewTotal;
+const mapDispatchToProps = dispatch => ({
+  createTotal: total => dispatch(createTotal(total)),
+})
+
+NewBudget.propTypes = {
+  createTotal: Proptypes.func.isRequired,
+}
+
+export default connect(null, mapDispatchToProps)(NewTotal);
