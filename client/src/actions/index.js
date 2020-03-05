@@ -10,19 +10,19 @@ const GET_TOTALS = 'GET_TOTALS';
 
 const API_URL = 'http://localhost:3000/api/v1';
 
-const userSignup = () => {
-  const request = axios.post(`${API_URL}/users`)
+const userSignup = props => {
+  const request = axios.post(`${API_URL}/users`, props)
   return {
     type: USER_SIGNUP,
-    payload: request
+    payload: request,
   }
 };
 
-const userLogin = () => {
-  const request = axios.post(`${API_URL}/login`)
+const userLogin = props => {
+  const request = axios.post(`${API_URL}/login`, props)
   return {
     type: USER_LOGIN,
-    payload: request
+    payload: request,
   }
 };
 
@@ -34,16 +34,16 @@ const userLogout = () => {
   }
 };
 
-const createBudget = () => {
-  const request = axios.post(`${API_URL}/users/:user_id/budgets`)
+const createBudget = props => {
+  const request = axios.post(`${API_URL}/users/:user_id/budgets`, props)
   return {
     type: CREATE_BUDGET,
     payload: request
   }
 };
 
-const createTotal = () => {
-  const request = axios.post(`${API_URL}/budgets/:budget_id/budget_totals`)
+const createTotal = props => {
+  const request = axios.post(`${API_URL}/budgets/:budget_id/budget_totals`, props)
   return {
     type: CREATE_TOTAL,
     payload: request

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       resources :users do
         resources :budgets
       end
-      resources :sessions 
+      post '/login', to: 'sessions#create'
+      post '/logout', to: 'sessions#destroy'
       resources :budgets do
         resources :budget_totals
       end

@@ -1,5 +1,12 @@
 class Api::V1::BudgetsController < ApplicationController
 
+  def new
+    @user = User.find(params[:user_id])
+    log_in @user
+    @budget = current_user.budgets.build
+    render json: @budget
+  end
+  
   def index
     @budgets = Budget.all
     render json: @budgets
