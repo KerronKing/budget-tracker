@@ -1,12 +1,5 @@
 class Api::V1::BudgetsController < ApplicationController
   before_action :authenticate_user
-
-  def new
-    @user = User.find(params[:user_id])
-    log_in @user
-    @budget = current_user.budgets.build
-    render json: @budget
-  end
   
   def index
     @budgets = Budget.all
@@ -19,8 +12,6 @@ class Api::V1::BudgetsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    log_in @user
     @budget = current_user.budgets.build(budget_params)
     if @budget.save
       render json: @budget, status: 201

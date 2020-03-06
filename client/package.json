@@ -45,7 +45,7 @@
     "eslint-plugin-react-hooks": "^1.7.0"
   },
   "proxy": {
-    "/api": {
+    "/api/v1": {
       "target": "http://localhost:3001"
     }
   }

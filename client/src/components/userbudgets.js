@@ -6,7 +6,8 @@ import getBudgets from '../actions/index';
 
 class UserBudgets extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
+    let token = "Bearer " + localStorage.getItem("jwt");
     const { getBudgets } = this.props;
     getBudgets();
   }

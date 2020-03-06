@@ -16,8 +16,8 @@ const userSignup = user => {
   }
 };
 
-const createBudget = props => {
-  const request = axios.post(`${API_URL}/users/:user_id/budgets`, props)
+const createBudget = budget => {
+  const request = axios.post(`${API_URL}/users/:user_id/budgets`, budget)
   return {
     type: CREATE_BUDGET,
     payload: request

@@ -6,4 +6,9 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password_digest { '123456' }
   end
+  trait :with_budget do
+    after(:create) do |user|
+      create(:budget, user_id: user.id)
+    end
+  end
 end
