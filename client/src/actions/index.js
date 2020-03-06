@@ -57,7 +57,7 @@ const getBudget = (token, id) => {
   }
 };
 
-export default {
+export {
   userSignup, USER_SIGNUP,
   getUser, GET_USER,
   createBudget, CREATE_BUDGET,

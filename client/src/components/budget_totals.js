@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import getBudget from '../actions/index';
+import { getBudget } from '../actions/index';
 
 class BudgetTotals extends React.Component {
 
@@ -13,6 +13,7 @@ class BudgetTotals extends React.Component {
   }
 
   render() {
+    const { budget } = this.props;
     return (
       <div>
         <h1>Budgets Data</h1>
@@ -44,4 +45,4 @@ BudgetTotals.propTypes = {
   getBudget: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BudgetsTotals);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetTotals);

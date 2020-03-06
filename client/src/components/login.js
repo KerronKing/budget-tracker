@@ -48,18 +48,17 @@ class Login extends React.Component {
     const { email, password } = this.state;
     const { history } = this.props;
 
-    const request = {"auth": {"email": email, "password": password}};
-    post('/api/v1/login', request)
-      .then(response => {
-        localStorage.setItem("jwt", response.data.jwt);
-        history.push("/");
-      })
-      .catch(error => console.log('error', error));
-
     nameLogin.value = '';
     emailLogin.value = '';
     passwordLogin.value = '';
     confirmationLogin.value = '';
+
+    const request = {"auth": {"email": email, "password": password}};
+    post('/api/v1/login', request)
+      .then(response => {
+        localStorage.setItem("jwt", response.data.jwt);
+        history.push("/budgets");
+      })
   }
 
   render() {

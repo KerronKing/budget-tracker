@@ -1,7 +1,8 @@
 import React from 'react';
+import { post } from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import userSignup from '../actions/index';
+import { userSignup } from '../actions/index';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -46,11 +47,16 @@ class Signup extends React.Component {
     const password = document.getElementById('password-signup');
     const confirmation = document.getElementById('confirmation-signup');
 
-    const { userSignup } = this.props;
-    const user = { ...this.state };
-    userSignup(user).then(() => {
-      this.context.router.push('/');
-    });
+    const { userSignup, history } = this.props;
+    const { email, password } = this.state;
+    const user = { user: this.state };
+
+    const request = {"auth": {"email": email, "password": password}};
+    post('/api/v1/login', request)
+      .then(response => {
+        localStorage.setItem("jwt", response.data.jwt);
+      })
+    userSignup(user);
 
     this.setState({
       name: '',
@@ -63,6 +69,8 @@ class Signup extends React.Component {
     email.value = '';
     password.value = '';
     confirmation.value = '';
+
+    history.push('/budgets');
   }
 
   render() {

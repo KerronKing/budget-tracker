@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import getBudget from '../actions/index';
-import createTotal from '../actions/index';
+import { createTotal } from '../actions/index';
 
 class NewTotal extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import createBudget from '../actions/index';
+import { createBudget } from '../actions/index';
 
 class NewBudget extends React.Component {
   constructor(props) {

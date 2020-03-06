@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import getBudgets from '../actions/index';
+import { getBudgets } from '../actions/index';
 
 class UserBudgets extends React.Component {
 
