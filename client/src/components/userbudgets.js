@@ -9,7 +9,7 @@ class UserBudgets extends React.Component {
   componentDidMount() {
     let token = "Bearer " + localStorage.getItem("jwt");
     const { getBudgets } = this.props;
-    getBudgets();
+    getBudgets(token);
   }
 
   render() {
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getBudgets: () => dispatch(getBudgets),
+  getBudgets: token => dispatch(getBudgets(token)),
 });
 
 UserBudgets.propTypes = {

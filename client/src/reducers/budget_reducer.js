@@ -1,8 +1,8 @@
 import GET_BUDGETS from '../actions/index';
+import GET_BUDGET from '../actions/index';
 
 const initialState = {
   all: [],
-  budget: null,
 };
 
 const budgetReducer = (state = initialState, action) => {

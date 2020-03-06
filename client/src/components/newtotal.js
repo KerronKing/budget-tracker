@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import getBudget from '../actions/index';
 import createTotal from '../actions/index';
 
 class NewTotal extends React.Component {
@@ -68,10 +69,11 @@ class NewTotal extends React.Component {
     const utilities = document.getElementById('utilities');
     const other = document.getElementById('other');
 
-    const { createTotal } = this.props;
+    const { budget_id } = this.props.params;
+    const { createTotal, history } = this.props;
     const total = { ...this.state };
-    createTotal(total).then(() => {
-      this.context.router.push('/');
+    createTotal(total, budget_id).then(() => {
+      history.push("/budgets");
     });
 
     this.setState({
@@ -168,7 +170,7 @@ class NewTotal extends React.Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  createTotal: total => dispatch(createTotal(total)),
+  createTotal: (total, budget_id) => dispatch(createTotal(total, budget_id)),
 })
 
 NewTotal.propTypes = {

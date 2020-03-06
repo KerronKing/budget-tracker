@@ -4,7 +4,6 @@ const USER_SIGNUP = 'USER_SIGNUP';
 const CREATE_BUDGET = 'CREATE_BUDGET';
 const CREATE_TOTAL = 'CREATE_TOTAL';
 const GET_BUDGETS = 'GET_BUDGETS';
-const GET_TOTALS = 'GET_TOTALS';
 
 const API_URL = 'http://localhost:3001/api/v1';
 
@@ -17,33 +16,25 @@ const userSignup = user => {
 };
 
 const createBudget = budget => {
-  const request = axios.post(`${API_URL}/users/:user_id/budgets`, budget)
+  const request = axios.post(`${API_URL}/budgets`, budget)
   return {
     type: CREATE_BUDGET,
     payload: request
   }
 };
 
-const createTotal = props => {
-  const request = axios.post(`${API_URL}/budgets/:budget_id/budget_totals`, props)
+const createTotal = (total, budget_id) => {
+  const request = axios.post(`${API_URL}/budgets/${budget_id}/budget_totals`, total)
   return {
     type: CREATE_TOTAL,
     payload: request
   }
 };
 
-const getBudgets = () => {
-  const request = axios.get(`${API_URL}/users/:user_id/budgets`)
+const getBudgets = token => {
+  const request = axios.get({ method: `${API_URL}/budgets`, headers: { 'Authorization': token } })
   return {
     type: GET_BUDGETS,
-    payload: request
-  }
-};
-
-const getTotals = () => {
-  const request = axios.get(`${API_URL}/budgets/:budget_id/budget_totals`)
-  return {
-    type: GET_TOTALS,
     payload: request
   }
 };
@@ -53,6 +44,5 @@ export default {
   createBudget, CREATE_BUDGET,
   createTotal, CREATE_TOTAL,
   getBudgets, GET_BUDGETS,
-  getTotals, GET_TOTALS,
 }
 

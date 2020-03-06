@@ -49,7 +49,7 @@ class Login extends React.Component {
     const { history } = this.props;
 
     const request = {"auth": {"email": email, "password": password}};
-    post('/api/v1/user_token', request)
+    post('/api/v1/login', request)
       .then(response => {
         localStorage.setItem("jwt", response.data.jwt);
         history.push("/");
