@@ -4,6 +4,7 @@ const USER_SIGNUP = 'USER_SIGNUP';
 const CREATE_BUDGET = 'CREATE_BUDGET';
 const CREATE_TOTAL = 'CREATE_TOTAL';
 const GET_BUDGETS = 'GET_BUDGETS';
+const GET_BUDGET = 'GET_BUDGET';
 
 const API_URL = 'http://localhost:3001/api/v1';
 
@@ -39,10 +40,19 @@ const getBudgets = token => {
   }
 };
 
+const getBudget = (token, id) => {
+  const request = axios.get({ method: `${API_URL}/budgets/${id}`, headers: { 'Authorization': token } })
+  return {
+    type: GET_BUDGET,
+    payload: request
+  }
+};
+
 export default {
   userSignup, USER_SIGNUP,
   createBudget, CREATE_BUDGET,
   createTotal, CREATE_TOTAL,
   getBudgets, GET_BUDGETS,
+  getBudget, GET_BUDGET,
 }
 

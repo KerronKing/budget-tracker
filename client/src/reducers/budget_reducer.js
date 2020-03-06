@@ -3,6 +3,7 @@ import GET_BUDGET from '../actions/index';
 
 const initialState = {
   all: [],
+  budget: null,
 };
 
 const budgetReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const budgetReducer = (state = initialState, action) => {
       return {
         ...state,
         all: action.payload.data,
+      }
+    case GET_BUDGET:
+      return {
+        ...state,
+        budget: action.payload.data,
       }
     default:
       return state;
