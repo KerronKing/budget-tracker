@@ -1,13 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe 'Budgets API', type: :request do
-  let(:user) { create(:user) }
-  let(:budgets) { build_list(:budget, 5) }
-  let(:user_id) { user.id }
-  let(:budget_id) { budgets.first.id }
+  before(:each) do
+    @user = User.create(name: 'Curtis',
+                        email: 'curtis@example.com',
+                        password: '123456',
+                        password_confirmation: '123456')
+    @budget = @user.budgets.build(start_date: '2020-03-01', end_date: '2020-03-31', income: 7000)
+    @budget.save
+  end
+  
+  def authenticated_header(user)
+    token = Knock::AuthToken.new(payload: { sub: user.id }).token
+    {
+      'Authorization': "Bearer #{token}"
+    }
+  end
 
   describe 'GET /api/v1/budgets' do
-    before(:each) { get '/api/v1/budgets', headers: auth_header(user) }
+    before(:each) { get '/api/v1/budgets', headers: authenticated_header(@user) }
 
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
@@ -20,24 +31,16 @@ RSpec.describe 'Budgets API', type: :request do
   end
 
   describe 'GET /api/v1/budgets/:id' do
-    before(:each) { get "/api/v1/budgets/#{budget_id}", headers: auth_header(user) }
+    before(:each) { get "/api/v1/budgets/#{@budget.id}", headers: authenticated_header(@user) }
 
     context 'when the budget record exists' do
       it 'returns the budget' do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(budget_id)
+        expect(json['id']).to eq(@budget.id)
       end
 
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
-      end
-    end
-
-    context 'when the record does not exist' do
-      let(:budget_id) { 100 }
-
-      it 'returns status code 404' do
-        expect(response).to have_http_status(404)
       end
     end
   end
@@ -60,7 +63,7 @@ RSpec.describe 'Budgets API', type: :request do
     end
 
     context 'when the request is valid' do
-      before(:each) { post "/api/v1/budgets", headers: auth_header(user), params: { budget: valid_attributes } }
+      before(:each) { post "/api/v1/budgets", headers: authenticated_header(@user), params: { budget: valid_attributes } }
 
       it 'creates a budget' do
         expect(json['start_date']).to eq('2020-03-01')
@@ -72,7 +75,7 @@ RSpec.describe 'Budgets API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before(:each) { post "/api/v1/budgets", headers: auth_header(user), params: { budget: invalid_attributes } }
+      before(:each) { post "/api/v1/budgets", headers: authenticated_header(@user), params: { budget: invalid_attributes } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -81,7 +84,7 @@ RSpec.describe 'Budgets API', type: :request do
   end
 
   describe 'DELETE /api/v1/budgets/:id' do
-    before { delete "/api/v1/budgets/#{budget_id}", headers: auth_header(user) }
+    before { delete "/api/v1/budgets/#{@budget.id}", headers: authenticated_header(@user) }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
