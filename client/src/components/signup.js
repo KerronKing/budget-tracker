@@ -43,8 +43,8 @@ class Signup extends React.Component {
     e.preventDefault();
 
     const name = document.getElementById('nameInput-signup');
-    const email = document.getElementById('emailInput-signup');
-    const password = document.getElementById('password-signup');
+    const emailInput = document.getElementById('emailInput-signup');
+    const passwordInput = document.getElementById('password-signup');
     const confirmation = document.getElementById('confirmation-signup');
 
     const { userSignup, history } = this.props;
@@ -66,8 +66,8 @@ class Signup extends React.Component {
     });
 
     name.value = '';
-    email.value = '';
-    password.value = '';
+    emailInput.value = '';
+    passwordInput.value = '';
     confirmation.value = '';
 
     history.push('/budgets');

@@ -54,7 +54,7 @@ class Login extends React.Component {
     confirmationLogin.value = '';
 
     const request = {"auth": {"email": email, "password": password}};
-    post('/api/v1/login', request)
+    post('http://localhost:3001/login', request)
       .then(response => {
         localStorage.setItem("jwt", response.data.jwt);
         history.push("/budgets");

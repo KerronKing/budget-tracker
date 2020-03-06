@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Login from './login';
+import Logout from './logout';
 import Signup from './signup';
 import UserProfile from './userprofile';
 import UserBudgets from './userbudgets';
@@ -11,15 +12,34 @@ import './App.css';
 import Footer from './footer';
 
 class App extends React.Component {
+  loggedIn() {
+    const token = localStorage.getItem("jwt");
+    return token ? true : false; 
+  }
+
   render() {
     return (
       <div className="App">
         Testing the routes
         <h1>Budget Tracker</h1>
-        <Link to='/login'>login</Link>  
-        <Footer />
+        { this.loggedIn() ?
+          <div>
+            <div>
+              <Link to='/logout'>logout</Link> 
+            </div>
+            <div>
+              <Footer />
+            </div> 
+          </div>
+          :
+          <div>
+            <Link to='/login'>login</Link>
+            <Link to='/signin'>login</Link>
+          </div> 
+        }
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/users/:id" component={UserProfile} />
           <Route exact path="/budgets" component={UserBudgets} />
