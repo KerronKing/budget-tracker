@@ -21,7 +21,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/user" component={UserProfile} />
+          <Route exact path="/users/:id" component={UserProfile} />
           <Route exact path="/budgets" component={UserBudgets} />
           <Route exact path="/budgets/new" component={NewBudget} />
           <Route exact path="/budget_totals/new" component={NewTotal} />

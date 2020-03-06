@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const USER_SIGNUP = 'USER_SIGNUP';
+const GET_USER = 'GET_USER';
 const CREATE_BUDGET = 'CREATE_BUDGET';
 const CREATE_TOTAL = 'CREATE_TOTAL';
 const GET_BUDGETS = 'GET_BUDGETS';
@@ -9,47 +10,56 @@ const GET_BUDGET = 'GET_BUDGET';
 const API_URL = 'http://localhost:3001/api/v1';
 
 const userSignup = user => {
-  const request = axios.post(`${API_URL}/users`, user)
+  const request = axios.post(`${API_URL}/users`, user);
   return {
     type: USER_SIGNUP,
     payload: request,
   }
 };
 
+const getUser = (token, id) => {
+  const request = axios.get({ method: `${API_URL}/users${id}`, headers: { 'Authorization': token } });
+  return {
+    type: GET_USER,
+    payload: request,
+  }
+};
+
 const createBudget = budget => {
-  const request = axios.post(`${API_URL}/budgets`, budget)
+  const request = axios.post(`${API_URL}/budgets`, budget);
   return {
     type: CREATE_BUDGET,
-    payload: request
+    payload: request,
   }
 };
 
 const createTotal = (total, budget_id) => {
-  const request = axios.post(`${API_URL}/budgets/${budget_id}/budget_totals`, total)
+  const request = axios.post(`${API_URL}/budgets/${budget_id}/budget_totals`, total);
   return {
     type: CREATE_TOTAL,
-    payload: request
+    payload: request,
   }
 };
 
 const getBudgets = token => {
-  const request = axios.get({ method: `${API_URL}/budgets`, headers: { 'Authorization': token } })
+  const request = axios.get({ method: `${API_URL}/budgets`, headers: { 'Authorization': token } });
   return {
     type: GET_BUDGETS,
-    payload: request
+    payload: request,
   }
 };
 
 const getBudget = (token, id) => {
-  const request = axios.get({ method: `${API_URL}/budgets/${id}`, headers: { 'Authorization': token } })
+  const request = axios.get({ method: `${API_URL}/budgets/${id}`, headers: { 'Authorization': token } });
   return {
     type: GET_BUDGET,
-    payload: request
+    payload: request,
   }
 };
 
 export default {
   userSignup, USER_SIGNUP,
+  getUser, GET_USER,
   createBudget, CREATE_BUDGET,
   createTotal, CREATE_TOTAL,
   getBudgets, GET_BUDGETS,
