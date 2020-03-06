@@ -16,10 +16,6 @@ class NewBudget extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
   handleChange(e) {
     const { value, id } = e.target;
     if (id === 'start-date') {
@@ -44,10 +40,10 @@ class NewBudget extends React.Component {
     const endDate = document.getElementById('end-date');
     const incomeField = document.getElementById('income');
 
-    const { createBudget } = this.props;
+    const { createBudget, history } = this.props;
     const budget = { ...this.state };
     createBudget(budget).then(() => {
-      this.context.router.push('/');
+      history.push("/");
     });
 
     this.setState({

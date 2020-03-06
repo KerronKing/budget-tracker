@@ -1,15 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getBudget } from '../actions/index';
 
 class BudgetTotals extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      budget: {},
+      budget_totals: [],
+    }
+  }
+  
   componentDidMount() {
     let token = "Bearer " + localStorage.getItem("jwt");
-    const { getBudget } = this.props;
-    const { budget_id } = this.props.params;
-    getBudget(token, budget_id);
+    let id = this.props.params;
+    axios({method: 'get', url: `http://localhost:3001/api/v1/budgets/${id}`, headers: {'Authorization': token }})
+      .then(response => {
+        this.setState({ budget: response.data });
+      })
+    axios({method: 'get', url: `http://localhost:3001/api/v1/budgets${id}/budget_totals`, headers: {'Authorization': token }})
+      .then(response => {
+        this.setState({ budget_totals: response.data });
+      })
   }
 
   render() {
@@ -33,16 +44,8 @@ class BudgetTotals extends React.Component {
   }
 };
 
-const mapStateToProps = state => ({
-  budget: state.budgets.budget,
-});
-
-const mapDispatchToProps = dispatch => ({
-  getBudget: (token, id) => dispatch(getBudget(token, id)),
-});
-
 BudgetTotals.propTypes = {
   getBudget: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BudgetTotals);
+export default BudgetTotals;

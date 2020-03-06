@@ -1,6 +1,9 @@
 import React from 'react';
 import { post } from 'axios';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import { getUser } from '../actions/index';
 
 class Login extends React.Component {
   constructor(props) {
@@ -45,7 +48,7 @@ class Login extends React.Component {
     const passwordLogin = document.getElementById('password');
     const confirmationLogin = document.getElementById('confirmation');
 
-    const { email, password } = this.state;
+    const { name, email, password } = this.state;
     const { history } = this.props;
 
     nameLogin.value = '';
@@ -57,6 +60,7 @@ class Login extends React.Component {
     post('http://localhost:3001/login', request)
       .then(response => {
         localStorage.setItem("jwt", response.data.jwt);
+        getUser(name, email);
         history.push("/budgets");
       })
   }
@@ -108,4 +112,12 @@ class Login extends React.Component {
   }
 };
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  getUser: (name, email) => dispatch(getUser(name, email)),
+});
+
+Login.propTypes = {
+  getUser: PropTypes.func.isRequired,
+}
+
+export default connect(null, mapDispatchToProps)(Login);

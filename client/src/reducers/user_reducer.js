@@ -1,7 +1,8 @@
 import { GET_USER } from '../actions/index';
 
 const initialState = {
-  user: null,
+  name: '',
+  email: '',
 };
 
 const userReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ const userReducer = (state = initialState, action) => {
     case GET_USER:
       return {
         ...state,
-        user: action.payload.data,
+        name: action.name,
+        email: action.email,
       }
     default:
       return state;

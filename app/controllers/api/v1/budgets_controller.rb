@@ -2,7 +2,7 @@ class Api::V1::BudgetsController < ApplicationController
   before_action :authenticate_user
   
   def index
-    @budgets = Budget.all
+    @budgets = self.current_user_budgets
     render json: @budgets
   end
 
@@ -25,9 +25,13 @@ class Api::V1::BudgetsController < ApplicationController
     @budget.destroy
   end
 
+  def current_user_budgets
+    Budget.where('user_id = ?', current_user.id)
+  end
+
   private
 
   def budget_params
-    params.require(:budget).permit(:start_date, :end_date, :income)
+    params.require(:budget).permit(:start_date, :end_date, :income, :user_id)
   end
 end

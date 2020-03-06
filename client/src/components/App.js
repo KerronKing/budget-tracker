@@ -33,8 +33,8 @@ class App extends React.Component {
           </div>
           :
           <div>
-            <Link to='/login'>login</Link>
-            <Link to='/signin'>login</Link>
+            <Link to='/login'>Login</Link>
+            <Link to='/signup'>Sign Up</Link>
           </div> 
         }
         <Switch>

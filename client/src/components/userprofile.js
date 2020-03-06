@@ -1,39 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getUser } from '../actions/index';
 
-class UserProfile extends React.Component {
-
-  componentDidMount() {
-    let token = "Bearer " + localStorage.getItem("jwt");
-    const { getUser } = this.props;
-    const { id } = this.props.params;
-    getUser(token, id);
-  }
-
-  render() {
-    const { user } = this.props;
-    return (
-      <div>
-        <h1>{user.name}</h1>
-        <Link to={"/budgets"}></Link>
-      </div>
-    )
-  }
+const UserProfile = () => {
+  const { name, email } = this.props;
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>{email}</p>
+      <Link to={"/budgets"}></Link>
+    </div>
+  )
 };
 
 const mapStateToProps = state => ({
-  user: state.users.user,
+  name: state.name,
+  email: state.email,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getUser: (token, id) => dispatch(getUser(token, id)),
-});
-
-UserProfile.propTypes = {
-  getUser: PropTypes.func.isRequired,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, null)(UserProfile);

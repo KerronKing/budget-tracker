@@ -20,10 +20,6 @@ class NewTotal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
   handleChange(e) {
     const { value, id } = e.target;
     if (id === 'date') {
