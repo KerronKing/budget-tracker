@@ -42,7 +42,7 @@ class Login extends React.Component {
     const passwordLogin = document.getElementById('password');
 
     const { name, email, password } = this.state;
-    const { history } = this.props;
+    const { getUser, history } = this.props;
 
     nameLogin.value = '';
     emailLogin.value = '';
@@ -103,6 +103,13 @@ const mapDispatchToProps = dispatch => ({
 
 Login.propTypes = {
   getUser: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.shape.isRequired,
+  }),
+};
+
+Login.defaultProps = {
+  history: PropTypes.shape,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

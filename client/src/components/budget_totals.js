@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class BudgetTotals extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class BudgetTotals extends React.Component {
 
   componentDidMount() {
     const token = `Bearer ${localStorage.getItem('jwt')}`;
-    const { budgetId } = this.props.match.params;
+    const { match: { params: { budgetId } } } = this.props;
     axios({ method: 'get', url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`, headers: { Authorization: token } })
       .then(response => {
         this.setState({ budgetTotals: response.data });
@@ -38,5 +39,9 @@ class BudgetTotals extends React.Component {
     );
   }
 }
+
+BudgetTotals.propTypes = {
+  match: PropTypes.string.isRequired,
+};
 
 export default BudgetTotals;

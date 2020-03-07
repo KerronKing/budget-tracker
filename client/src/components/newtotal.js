@@ -55,7 +55,6 @@ class NewTotal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props.match.params);
     const date = document.getElementById('date');
     const rent = document.getElementById('rent');
     const transport = document.getElementById('transport');
@@ -64,10 +63,10 @@ class NewTotal extends React.Component {
     const utilities = document.getElementById('utilities');
     const other = document.getElementById('other');
 
-    const { budget_id } = this.props.params;
+    const { match: { params: { budgetId } } } = this.props;
     const { createTotal, history } = this.props;
     const total = { ...this.state };
-    createTotal(total, budget_id).then(() => {
+    createTotal(total, budgetId).then(() => {
       history.push('/budgets');
     });
 
@@ -159,11 +158,22 @@ class NewTotal extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createTotal: (total, budget_id) => dispatch(createTotal(total, budget_id)),
+  createTotal: (total, budgetId) => dispatch(createTotal(total, budgetId)),
 });
 
 NewTotal.propTypes = {
   createTotal: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.shape.isRequired,
+  }),
+  params: PropTypes.shape({
+    budgetId: PropTypes.string,
+  }),
+};
+
+NewTotal.defaultProps = {
+  history: PropTypes.shape,
+  params: PropTypes.shape,
 };
 
 export default connect(null, mapDispatchToProps)(NewTotal);

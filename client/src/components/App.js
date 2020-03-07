@@ -12,12 +12,6 @@ import './App.css';
 import Footer from './footer';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.loggedIn = this.loggedIn.bind(this);
-  }
-  
   loggedIn() {
     const token = localStorage.getItem('jwt');
     return !!token;
@@ -52,7 +46,7 @@ class App extends React.Component {
           <Route exact path="/user" component={UserProfile} />
           <Route exact path="/budgets" component={UserBudgets} />
           <Route exact path="/budgets/new" component={NewBudget} />
-          <Route exact path=":budgetId/budget_totals/new" component={NewTotal} />
+          <Route exact path=":budgetId/budgetTotals/new" component={NewTotal} />
           <Route exact path="/budgets/:budgetId/budget_totals" component={BudgetTotals} />
         </Switch>
       </div>

@@ -99,6 +99,13 @@ const mapDispatchToProps = dispatch => ({
 
 NewBudget.propTypes = {
   createBudget: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.shape.isRequired,
+  }),
+};
+
+NewBudget.defaultProps = {
+  history: PropTypes.shape,
 };
 
 export default connect(null, mapDispatchToProps)(NewBudget);

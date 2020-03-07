@@ -1,24 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-class UserProfile extends React.Component {
-  render() {
-    const { name, email } = this.props;
-    return (
-      <div>
-        <h1>Profile</h1>
-        <h2>{name}</h2>
-        <p>{email}</p>
-        <Link to="/budgets" />
-      </div>
-    );
-  }
-}
+const UserProfile = ({ name, email }) => (
+  <div>
+    <h1>Profile</h1>
+    <h2>{name}</h2>
+    <p>{email}</p>
+    <Link to="/budgets" />
+  </div>
+);
 
 const mapStateToProps = state => ({
-  name: state.name,
-  email: state.email,
+  name: state.users.name,
+  email: state.users.email,
 });
+
+UserProfile.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps, null)(UserProfile);

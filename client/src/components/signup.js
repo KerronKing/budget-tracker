@@ -11,7 +11,6 @@ class Signup extends React.Component {
       name: '',
       email: '',
       password: '',
-      password_confirmation: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,13 +27,9 @@ class Signup extends React.Component {
       this.setState({
         email: value,
       });
-    } else if (id === 'password-signup') {
-      this.setState({
-        password: value,
-      });
     } else {
       this.setState({
-        password_confirmation: value,
+        password: value,
       });
     }
   }
@@ -45,9 +40,8 @@ class Signup extends React.Component {
     const nameInput = document.getElementById('nameInput-signup');
     const emailInput = document.getElementById('emailInput-signup');
     const passwordInput = document.getElementById('password-signup');
-    const confirmation = document.getElementById('confirmation-signup');
 
-    const { userSignup, history } = this.props;
+    const { userSignup, history, getUser } = this.props;
     const { name, email, password } = this.state;
     const user = { user: this.state };
 
@@ -56,19 +50,18 @@ class Signup extends React.Component {
       .then(response => {
         localStorage.setItem('jwt', response.data.jwt);
         userSignup(user);
+        getUser(name, email);
       });
-    getUser(name, email);
+
     this.setState({
       name: '',
       email: '',
       password: '',
-      password_confirmation: '',
     });
 
     nameInput.value = '';
     emailInput.value = '';
     passwordInput.value = '';
-    confirmation.value = '';
 
     history.push('/budgets');
   }
@@ -101,14 +94,6 @@ class Signup extends React.Component {
             placeholder="Enter your password"
             required
           />
-          <input
-            type="text"
-            onChange={this.handleChange}
-            className="user-input"
-            id="confirmation-signup"
-            placeholder="Confirm your password"
-            required
-          />
           <button type="submit">Sign Up</button>
         </form>
       </div>
@@ -124,6 +109,13 @@ const mapDispatchToProps = dispatch => ({
 Signup.propTypes = {
   userSignup: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.shape.isRequired,
+  }),
+};
+
+Signup.defaultProps = {
+  history: PropTypes.shape,
 };
 
 export default connect(null, mapDispatchToProps)(Signup);

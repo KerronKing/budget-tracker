@@ -1,25 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { getBudgets } from '../actions/index';
 
 class UserBudgets extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { budgets: [] };
-  }
-
   componentDidMount() {
+    const { getBudgets } = this.props;
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     axios({ method: 'get', url: 'http://localhost:3001/api/v1/budgets', headers: { Authorization: token } })
       .then(response => {
-        this.setState({ budgets: response.data });
-        console.log(response.data);
+        getBudgets(response.data);
       });
   }
 
   render() {
-    const { budgets } = this.state;
+    const { budgets } = this.props;
     return (
       <div>
         <h1>Your Budgets</h1>
@@ -40,8 +37,24 @@ class UserBudgets extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  name: state.name,
-  email: state.email,
+  budgets: state.budgets.all,
+  name: state.users.name,
+  email: state.users.email,
 });
 
-export default connect(mapStateToProps, null)(UserBudgets);
+const mapDispatchToProps = dispatch => ({
+  getBudgets: budgets => dispatch(getBudgets(budgets)),
+});
+
+UserBudgets.propTypes = {
+  getBudgets = PropTypes.func.isRequired,
+  budgets = PropTypes.shape({
+    map: PropTypes.func.isRequired,
+  })
+}
+
+UserBudgets.defaultProps = {
+  budgets = PropTypes.instanceOf(Array),
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserBudgets);
