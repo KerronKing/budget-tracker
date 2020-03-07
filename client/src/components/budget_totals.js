@@ -1,34 +1,29 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import axios from 'axios';
 
 class BudgetTotals extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      budget: {},
       budget_totals: [],
     }
   }
   
   componentDidMount() {
     let token = "Bearer " + localStorage.getItem("jwt");
-    let id = this.props.params;
-    axios({method: 'get', url: `http://localhost:3001/api/v1/budgets/${id}`, headers: {'Authorization': token }})
-      .then(response => {
-        this.setState({ budget: response.data });
-      })
-    axios({method: 'get', url: `http://localhost:3001/api/v1/budgets${id}/budget_totals`, headers: {'Authorization': token }})
+    const { budget_id } = this.props.match.params;
+    axios({method: 'get', url: `http://localhost:3001/api/v1/budgets/${budget_id}/budget_totals`, headers: {'Authorization': token }})
       .then(response => {
         this.setState({ budget_totals: response.data });
       })
   }
 
   render() {
-    const { budget } = this.props;
+    const { budget_totals } = this.state;
     return (
       <div>
         <h1>Budgets Data</h1>
-        {budget.budget_totals.map((budget_total) => (
+        {budget_totals.map((budget_total) => (
           <div>
             <p>{budget_total.date}</p>
             <p>{budget_total.rent}</p>
@@ -43,9 +38,5 @@ class BudgetTotals extends React.Component {
     )
   }
 };
-
-BudgetTotals.propTypes = {
-  getBudget: PropTypes.func.isRequired,
-}
 
 export default BudgetTotals;

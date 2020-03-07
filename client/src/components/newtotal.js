@@ -55,7 +55,7 @@ class NewTotal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    console.log(this.props.match.params);
     const date = document.getElementById('date');
     const rent = document.getElementById('rent');
     const transport = document.getElementById('transport');
@@ -93,13 +93,13 @@ class NewTotal extends React.Component {
   render() {
     return (
       <div>
+        <h1>New Total Form</h1>
         <form onSubmit={this.handleSubmit}>
           <input 
             type="date"
             onChange={this.handleChange}
             className="user-input"
             id="date"
-            value='0'
             placeholder="Enter the date for this entry" 
             required
           />
@@ -108,7 +108,6 @@ class NewTotal extends React.Component {
             onChange={this.handleChange}
             className="user-input"
             id="rent"
-            value='0'
             placeholder="Enter today's rent payment (if any)" 
             required
           />
@@ -117,7 +116,6 @@ class NewTotal extends React.Component {
             onChange={this.handleChange}
             className="user-input"
             id="transport"
-            value='0'
             placeholder="Enter today's transport total" 
             required
           />
@@ -126,7 +124,6 @@ class NewTotal extends React.Component {
             onChange={this.handleChange}
             className="user-input"
             id="food"
-            value='0'
             placeholder="Enter today's food total" 
             required
           />
@@ -135,7 +132,6 @@ class NewTotal extends React.Component {
             onChange={this.handleChange}
             className="user-input"
             id="entertainment"
-            value='0'
             placeholder="Enter today's entertainment total" 
             required
           />
@@ -144,7 +140,6 @@ class NewTotal extends React.Component {
             onChange={this.handleChange}
             className="user-input"
             id="utilities"
-            value='0'
             placeholder="Enter today's utilities total" 
             required
           />
@@ -153,7 +148,6 @@ class NewTotal extends React.Component {
             onChange={this.handleChange}
             className="user-input"
             id="other"
-            value='0'
             placeholder="Enter today's other expenses" 
             required
           />

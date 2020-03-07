@@ -2,15 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const UserProfile = () => {
-  const { name, email } = this.props;
-  return (
-    <div>
-      <h2>{name}</h2>
-      <p>{email}</p>
-      <Link to={"/budgets"}></Link>
-    </div>
-  )
+class UserProfile extends React.Component {
+
+  render() {
+    const { name, email } = this.props;
+    return (
+      <div>
+        <h1>Profile</h1>
+        <h2>{name}</h2>
+        <p>{email}</p>
+        <Link to={"/budgets"}></Link>
+      </div>
+    )
+  }
 };
 
 const mapStateToProps = state => ({

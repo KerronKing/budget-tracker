@@ -1,4 +1,4 @@
-import { GET_USER } from '../actions/index';
+import { GET_USER, REMOVE_USER } from '../actions/index';
 
 const initialState = {
   name: '',
@@ -13,6 +13,8 @@ const userReducer = (state = initialState, action) => {
         name: action.name,
         email: action.email,
       }
+    case REMOVE_USER:
+      return Object.assign(state, {})
     default:
       return state;
   }

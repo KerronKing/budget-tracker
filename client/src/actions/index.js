@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const USER_SIGNUP = 'USER_SIGNUP';
 const GET_USER = 'GET_USER';
+const REMOVE_USER = 'REMOVE_USER';
 const CREATE_BUDGET = 'CREATE_BUDGET';
 const CREATE_TOTAL = 'CREATE_TOTAL';
 
@@ -15,11 +16,17 @@ const userSignup = user => {
   }
 };
 
-const getUser = (user, email) => {
+const getUser = (name, email) => {
   return {
     type: GET_USER,
-    user,
+    name,
     email,
+  }
+};
+
+const removeUser = () => {
+  return {
+    type: REMOVE_USER,
   }
 };
 
@@ -42,6 +49,7 @@ const createTotal = (total, budget_id) => {
 export {
   userSignup, USER_SIGNUP,
   getUser, GET_USER,
+  removeUser, REMOVE_USER,
   createBudget, CREATE_BUDGET,
   createTotal, CREATE_TOTAL,
 }

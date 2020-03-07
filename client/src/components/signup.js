@@ -2,7 +2,7 @@ import React from 'react';
 import { post } from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { userSignup } from '../actions/index';
+import { userSignup, getUser } from '../actions/index';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -42,22 +42,22 @@ class Signup extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const name = document.getElementById('nameInput-signup');
+    const nameInput = document.getElementById('nameInput-signup');
     const emailInput = document.getElementById('emailInput-signup');
     const passwordInput = document.getElementById('password-signup');
     const confirmation = document.getElementById('confirmation-signup');
 
     const { userSignup, history } = this.props;
-    const { email, password } = this.state;
+    const { name, email, password } = this.state;
     const user = { user: this.state };
 
     const request = {"auth": {"email": email, "password": password}};
     post('/api/v1/login', request)
       .then(response => {
         localStorage.setItem("jwt", response.data.jwt);
+        userSignup(user);
       })
-    userSignup(user);
-
+    getUser(name, email);
     this.setState({
       name: '',
       email: '',
@@ -65,7 +65,7 @@ class Signup extends React.Component {
       password_confirmation: '',
     });
 
-    name.value = '';
+    nameInput.value = '';
     emailInput.value = '';
     passwordInput.value = '';
     confirmation.value = '';
@@ -118,10 +118,12 @@ class Signup extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   userSignup: user => dispatch(userSignup(user)),
+  getUser: (name, email) => dispatch(getUser(name, email)),
 })
 
 Signup.propTypes = {
   userSignup: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
 }
 
 export default connect(null, mapDispatchToProps)(Signup);

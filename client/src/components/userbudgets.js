@@ -30,7 +30,7 @@ class UserBudgets extends React.Component {
               <p>{budget.start_date}</p>
               <p>{budget.end_date}</p>
               <p>{budget.income}</p>
-              <Link to={"/budget_totals/new"}>New total</Link>
+              <Link to={budget.id + "/budget_totals/new"}>New total</Link>
             </div>
           </div>
         ))}

@@ -2,7 +2,6 @@ import React from 'react';
 import { post } from 'axios';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
 import { getUser } from '../actions/index';
 
 class Login extends React.Component {
@@ -60,9 +59,15 @@ class Login extends React.Component {
     post('http://localhost:3001/login', request)
       .then(response => {
         localStorage.setItem("jwt", response.data.jwt);
-        getUser(name, email);
         history.push("/budgets");
       })
+    getUser(name, email);
+    this.setState({
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+    })
   }
 
   render() {
@@ -103,10 +108,6 @@ class Login extends React.Component {
           />
           <button type="submit">Login</button>
         </form>
-        <div>
-          <p>or</p>
-          <Link to='/signup'>Sign Up</Link>
-        </div>
       </div>
     )
   }

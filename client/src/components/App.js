@@ -25,7 +25,7 @@ class App extends React.Component {
         { this.loggedIn() ?
           <div>
             <div>
-              <Link to='/logout'>logout</Link> 
+              <Link to='/logout'>logout</Link>
             </div>
             <div>
               <Footer />
@@ -41,10 +41,10 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/users/:id" component={UserProfile} />
+          <Route exact path="/user" component={UserProfile} />
           <Route exact path="/budgets" component={UserBudgets} />
           <Route exact path="/budgets/new" component={NewBudget} />
-          <Route exact path="/budget_totals/new" component={NewTotal} />
+          <Route exact path=":budget_id/budget_totals/new" component={NewTotal} />
           <Route exact path="/budgets/:budget_id/budget_totals" component={BudgetTotals} />
         </Switch>
       </div>
