@@ -12,9 +12,15 @@ import './App.css';
 import Footer from './footer';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.loggedIn = this.loggedIn.bind(this);
+  }
+  
   loggedIn() {
-    const token = localStorage.getItem("jwt");
-    return token ? true : false; 
+    const token = localStorage.getItem('jwt');
+    return !!token;
   }
 
   render() {
@@ -22,21 +28,23 @@ class App extends React.Component {
       <div className="App">
         Testing the routes
         <h1>Budget Tracker</h1>
-        { this.loggedIn() ?
-          <div>
+        { this.loggedIn()
+          ? (
             <div>
-              <Link to='/logout'>logout</Link>
+              <div>
+                <Link to="/logout">logout</Link>
+              </div>
+              <div>
+                <Footer />
+              </div>
             </div>
+          )
+          : (
             <div>
-              <Footer />
-            </div> 
-          </div>
-          :
-          <div>
-            <Link to='/login'>Login</Link>
-            <Link to='/signup'>Sign Up</Link>
-          </div> 
-        }
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+          )}
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
@@ -44,8 +52,8 @@ class App extends React.Component {
           <Route exact path="/user" component={UserProfile} />
           <Route exact path="/budgets" component={UserBudgets} />
           <Route exact path="/budgets/new" component={NewBudget} />
-          <Route exact path=":budget_id/budget_totals/new" component={NewTotal} />
-          <Route exact path="/budgets/:budget_id/budget_totals" component={BudgetTotals} />
+          <Route exact path=":budgetId/budget_totals/new" component={NewTotal} />
+          <Route exact path="/budgets/:budgetId/budget_totals" component={BudgetTotals} />
         </Switch>
       </div>
     );

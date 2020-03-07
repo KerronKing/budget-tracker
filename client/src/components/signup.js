@@ -6,13 +6,13 @@ import { userSignup, getUser } from '../actions/index';
 
 class Signup extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       name: '',
       email: '',
       password: '',
       password_confirmation: '',
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,19 +23,19 @@ class Signup extends React.Component {
     if (id === 'nameInput-signup') {
       this.setState({
         name: value,
-      })
+      });
     } else if (id === 'emailInput-signup') {
       this.setState({
         email: value,
-      })
+      });
     } else if (id === 'password-signup') {
       this.setState({
         password: value,
-      })
+      });
     } else {
       this.setState({
         password_confirmation: value,
-      })
+      });
     }
   }
 
@@ -51,12 +51,12 @@ class Signup extends React.Component {
     const { name, email, password } = this.state;
     const user = { user: this.state };
 
-    const request = {"auth": {"email": email, "password": password}};
+    const request = { auth: { email, password } };
     post('/api/v1/login', request)
       .then(response => {
-        localStorage.setItem("jwt", response.data.jwt);
+        localStorage.setItem('jwt', response.data.jwt);
         userSignup(user);
-      })
+      });
     getUser(name, email);
     this.setState({
       name: '',
@@ -77,53 +77,53 @@ class Signup extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input 
+          <input
             type="text"
             onChange={this.handleChange}
             className="user-input"
             id="nameInput-signup"
-            placeholder="Enter your name" 
+            placeholder="Enter your name"
             required
           />
-          <input 
+          <input
             type="email"
             onChange={this.handleChange}
             className="user-input"
             id="emailInput-signup"
-            placeholder="Enter your email" 
+            placeholder="Enter your email"
             required
           />
-          <input 
+          <input
             type="text"
             onChange={this.handleChange}
             className="user-input"
             id="password-signup"
-            placeholder="Enter your password" 
+            placeholder="Enter your password"
             required
           />
-          <input 
+          <input
             type="text"
             onChange={this.handleChange}
             className="user-input"
             id="confirmation-signup"
-            placeholder="Confirm your password" 
+            placeholder="Confirm your password"
             required
           />
           <button type="submit">Sign Up</button>
         </form>
       </div>
-    )
+    );
   }
-};
+}
 
 const mapDispatchToProps = dispatch => ({
   userSignup: user => dispatch(userSignup(user)),
   getUser: (name, email) => dispatch(getUser(name, email)),
-})
+});
 
 Signup.propTypes = {
   userSignup: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
-}
+};
 
 export default connect(null, mapDispatchToProps)(Signup);

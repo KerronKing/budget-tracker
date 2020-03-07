@@ -12,9 +12,9 @@ const userReducer = (state = initialState, action) => {
         ...state,
         name: action.name,
         email: action.email,
-      }
+      };
     case REMOVE_USER:
-      return Object.assign(state, {})
+      return Object.assign(state, {});
     default:
       return state;
   }

@@ -7,8 +7,8 @@ import { removeUser } from '../actions/index';
 const Logout = ({ removeUser }) => {
   localStorage.removeItem('jwt');
   removeUser();
-  return <Redirect to='/' />
-}
+  return <Redirect to="/" />;
+};
 
 const mapDispatchToProps = dispatch => ({
   removeUser: () => dispatch(removeUser()),
@@ -16,6 +16,6 @@ const mapDispatchToProps = dispatch => ({
 
 Logout.propTypes = {
   removeUser: PropTypes.func.isRequired,
-}
+};
 
 export default connect(null, mapDispatchToProps)(Logout);

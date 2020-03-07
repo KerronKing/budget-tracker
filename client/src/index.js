@@ -8,4 +8,4 @@ import './index.css';
 
 const store = createStore(userReducer, applyMiddleware(thunk));
 
-ReactDOM.render(<Root store={store} />,document.getElementById('root'));
+ReactDOM.render(<Root store={store} />, document.getElementById('root'));
