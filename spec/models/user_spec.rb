@@ -4,7 +4,8 @@ RSpec.describe User, type: :model do
   let(:user) { User.new(name: 'Curtis',
                         email: 'curtis@example.com',
                         password: '123456',
-                        password_confirmation: '123456') }
+                        password_confirmation: '123456')
+                      }
 
   it 'should have a name present' do
     expect(user).to be_valid

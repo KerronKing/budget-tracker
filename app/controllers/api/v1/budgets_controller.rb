@@ -1,8 +1,8 @@
 class Api::V1::BudgetsController < ApplicationController
   before_action :authenticate_user
-  
+
   def index
-    @budgets = self.current_user_budgets
+    @budgets = Budget.where('user_id = ?', current_user.id)
     render json: @budgets
   end
 
@@ -24,11 +24,7 @@ class Api::V1::BudgetsController < ApplicationController
     @budget = Budget.find(params[:id])
     @budget.destroy
   end
-
-  def current_user_budgets
-    Budget.where('user_id = ?', current_user.id)
-  end
-
+  
   private
 
   def budget_params
