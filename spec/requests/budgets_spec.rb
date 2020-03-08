@@ -63,11 +63,11 @@ RSpec.describe 'Budgets API', type: :request do
     end
 
     context 'when the request is valid' do
-      before(:each) {
+      before(:each) do
         post '/api/v1/budgets',
         headers: authenticated_header(@user),
-        params: { budget: valid_attributes }
-      }
+         params: { budget: valid_attributes }
+      end
 
       it 'creates a budget' do
         expect(json['start_date']).to eq('2020-03-01')
@@ -82,7 +82,7 @@ RSpec.describe 'Budgets API', type: :request do
       before(:each) do
         post '/api/v1/budgets',
         headers: authenticated_header(@user),
-        params: { budget: invalid_attributes }
+         params: { budget: invalid_attributes }
       end
 
       it 'returns status code 422' do
