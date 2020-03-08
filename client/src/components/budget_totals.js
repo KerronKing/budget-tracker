@@ -24,17 +24,19 @@ class BudgetTotals extends React.Component {
     return (
       <div>
         <h1>Budgets Data</h1>
-        {budgetTotals.map(budgetTotal => (
-          <div key={budgetTotal.id}>
-            <p>{budgetTotal.date}</p>
-            <p>{budgetTotal.rent}</p>
-            <p>{budgetTotal.transport}</p>
-            <p>{budgetTotal.food}</p>
-            <p>{budgetTotal.entertainment}</p>
-            <p>{budgetTotal.utilities}</p>
-            <p>{budgetTotal.other}</p>
-          </div>
-        ))}
+        { budgetTotals.length === 0
+          ? (<p>No Totals currently</p>)
+          : budgetTotals.map(budgetTotal => (
+            <div key={budgetTotal.id}>
+              <p>{budgetTotal.date}</p>
+              <p>{budgetTotal.rent}</p>
+              <p>{budgetTotal.transport}</p>
+              <p>{budgetTotal.food}</p>
+              <p>{budgetTotal.entertainment}</p>
+              <p>{budgetTotal.utilities}</p>
+              <p>{budgetTotal.other}</p>
+            </div>
+          ))}
       </div>
     );
   }
