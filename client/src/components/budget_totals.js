@@ -41,7 +41,7 @@ class BudgetTotals extends React.Component {
 }
 
 BudgetTotals.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default BudgetTotals;

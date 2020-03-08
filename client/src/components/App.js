@@ -22,7 +22,7 @@ class App extends React.Component {
       <div className="App">
         Testing the routes
         <h1>Budget Tracker</h1>
-        { this.loggedIn()
+        { this.loggedIn
           ? (
             <div>
               <div>
