@@ -47,14 +47,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 UserBudgets.propTypes = {
-  getBudgets = PropTypes.func.isRequired,
-  budgets = PropTypes.shape({
+  getBudgets: PropTypes.func.isRequired,
+  budgets: PropTypes.shape({
     map: PropTypes.func.isRequired,
-  })
-}
+  }),
+};
 
 UserBudgets.defaultProps = {
-  budgets = PropTypes.instanceOf(Array),
-}
+  budgets: PropTypes.instanceOf(Array),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserBudgets);

@@ -12,7 +12,7 @@ import './App.css';
 import Footer from './footer';
 
 class App extends React.Component {
-  loggedIn() {
+  static loggedIn() {
     const token = localStorage.getItem('jwt');
     return !!token;
   }

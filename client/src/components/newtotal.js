@@ -166,14 +166,16 @@ NewTotal.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.shape.isRequired,
   }),
-  params: PropTypes.shape({
-    budgetId: PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      budgetId: PropTypes.string,
+    }),
   }),
 };
 
 NewTotal.defaultProps = {
   history: PropTypes.shape,
-  params: PropTypes.shape,
+  match: PropTypes.shape,
 };
 
 export default connect(null, mapDispatchToProps)(NewTotal);
