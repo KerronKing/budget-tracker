@@ -24,7 +24,7 @@ class Api::V1::BudgetsController < ApplicationController
     @budget = Budget.find(params[:id])
     @budget.destroy
   end
-  
+
   private
 
   def budget_params

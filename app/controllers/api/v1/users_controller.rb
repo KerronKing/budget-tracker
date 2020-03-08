@@ -7,7 +7,6 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     render json: @user, adapter: :attributes, status: 201 if @user.save
-    end
   end
 
   def show
