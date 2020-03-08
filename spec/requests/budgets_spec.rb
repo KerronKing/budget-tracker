@@ -65,10 +65,10 @@ RSpec.describe 'Budgets API', type: :request do
     context 'when the request is valid' do
       before(:each) do
         post '/api/v1/budgets',
-          headers: authenticated_header(@user),
-          params: {
-            budget: valid_attributes
-          }
+        headers: authenticated_header(@user),
+        params: {
+          budget: valid_attributes
+        }
       end
 
       it 'creates a budget' do
@@ -83,10 +83,10 @@ RSpec.describe 'Budgets API', type: :request do
     context 'when the request is invalid' do
       before(:each) do
         post '/api/v1/budgets',
-          headers: authenticated_header(@user),
-          params: {
-            budget: invalid_attributes
-          }
+        headers: authenticated_header(@user),
+        params: {
+          budget: invalid_attributes
+        }
       end
 
       it 'returns status code 422' do
