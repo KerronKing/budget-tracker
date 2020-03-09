@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
+import Homepage from './home-page';
 import Login from './login';
 import Logout from './logout';
 import Signup from './signup';
@@ -20,25 +21,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Budget Tracker</h1>
         { this.loggedIn
           ? (
             <div>
-              <div>
-                <Link to="/logout">logout</Link>
-              </div>
-              <div>
-                <Footer />
-              </div>
+              <Footer />
             </div>
           )
           : (
-            <div className="login-links">
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign up</Link>
+            <div className="hidden">
+              <Footer />
             </div>
           )}
         <Switch>
+          <Route exact path="/" component={Homepage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/signup" component={Signup} />
