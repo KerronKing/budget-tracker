@@ -16,6 +16,9 @@
   visibility: hidden;
   width: 0px;
 }
+.visible {
+  visibility: visible;
+}
 .login-links {
   display: flex;
   flex-direction: column;

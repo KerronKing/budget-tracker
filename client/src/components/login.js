@@ -2,7 +2,7 @@ import React from 'react';
 import { post } from 'axios';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getUser } from '../actions/index';
+import { getUser, loggedIn } from '../actions/index';
 
 class Login extends React.Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class Login extends React.Component {
     const passwordLogin = document.getElementById('password');
 
     const { name, email, password } = this.state;
-    const { getUser, history } = this.props;
+    const { getUser, loggedIn, history } = this.props;
 
     nameLogin.value = '';
     emailLogin.value = '';
@@ -55,6 +55,7 @@ class Login extends React.Component {
         history.push('/budgets');
       });
     getUser(name, email);
+    loggedIn(true);
     this.setState({
       name: '',
       email: '',
@@ -74,7 +75,8 @@ class Login extends React.Component {
             id="nameInput"
             placeholder="Enter your name"
             required
-          /><br />
+          />
+          <br />
           <input
             type="email"
             onChange={this.handleChange}
@@ -82,7 +84,8 @@ class Login extends React.Component {
             id="emailInput"
             placeholder="Enter your email"
             required
-          /><br />
+          />
+          <br />
           <input
             type="text"
             onChange={this.handleChange}
@@ -90,7 +93,8 @@ class Login extends React.Component {
             id="password"
             placeholder="Enter your password"
             required
-          /><br />
+          />
+          <br />
           <button type="submit" className="app-btn">Login</button>
         </form>
       </div>
@@ -100,10 +104,12 @@ class Login extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   getUser: (name, email) => dispatch(getUser(name, email)),
+  loggedIn: status => dispatch(loggedIn(status)),
 });
 
 Login.propTypes = {
   getUser: PropTypes.func.isRequired,
+  loggedIn: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.shape.isRequired,
   }),

@@ -2,7 +2,7 @@ import React from 'react';
 import { post } from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { userSignup, getUser } from '../actions/index';
+import { userSignup, getUser, loggedIn } from '../actions/index';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class Signup extends React.Component {
     const emailInput = document.getElementById('emailInput-signup');
     const passwordInput = document.getElementById('password-signup');
 
-    const { userSignup, history, getUser } = this.props;
+    const { userSignup, history, getUser, loggedIn } = this.props;
     const { name, email, password } = this.state;
     const user = { user: this.state };
 
@@ -51,6 +51,7 @@ class Signup extends React.Component {
         localStorage.setItem('jwt', response.data.jwt);
         userSignup(user);
         getUser(name, email);
+        loggedIn(true);
       });
 
     this.setState({
@@ -68,7 +69,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login-form">
         <h2 className="logo">Budget Tracker</h2>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -78,7 +79,8 @@ class Signup extends React.Component {
             id="nameInput-signup"
             placeholder="Enter your name"
             required
-          /><br />
+          />
+          <br />
           <input
             type="email"
             onChange={this.handleChange}
@@ -86,7 +88,8 @@ class Signup extends React.Component {
             id="emailInput-signup"
             placeholder="Enter your email"
             required
-          /><br />
+          />
+          <br />
           <input
             type="text"
             onChange={this.handleChange}
@@ -94,7 +97,8 @@ class Signup extends React.Component {
             id="password-signup"
             placeholder="Enter your password"
             required
-          /><br />
+          />
+          <br />
           <button type="submit" className="app-btn">Sign Up</button>
         </form>
       </div>
@@ -105,11 +109,13 @@ class Signup extends React.Component {
 const mapDispatchToProps = dispatch => ({
   userSignup: user => dispatch(userSignup(user)),
   getUser: (name, email) => dispatch(getUser(name, email)),
+  loggedIn: status => dispatch(status),
 });
 
 Signup.propTypes = {
   userSignup: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
+  loggedIn: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.shape.isRequired,
   }),
