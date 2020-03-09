@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_133906) do
   end
 
   create_table "budgets", force: :cascade do |t|
+    t.string "name"
     t.date "start_date"
     t.date "end_date"
     t.integer "income"

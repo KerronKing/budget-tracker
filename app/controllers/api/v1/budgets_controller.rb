@@ -28,6 +28,6 @@ class Api::V1::BudgetsController < ApplicationController
   private
 
   def budget_params
-    params.require(:budget).permit(:start_date, :end_date, :income, :user_id)
+    params.require(:budget).permit(:name, :start_date, :end_date, :income, :user_id)
   end
 end

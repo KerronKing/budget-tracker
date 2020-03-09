@@ -6,7 +6,10 @@ RSpec.describe 'Budgets API', type: :request do
                         email: 'curtis@example.com',
                         password: '123456',
                         password_confirmation: '123456')
-    @budget = @user.budgets.build(start_date: '2020-03-01', end_date: '2020-03-31', income: 7000)
+    @budget = @user.budgets.build(name: 'March budget',
+                                  start_date: '2020-03-01',
+                                  end_date: '2020-03-31',
+                                  income: 7000)
     @budget.save
   end
 
@@ -48,6 +51,7 @@ RSpec.describe 'Budgets API', type: :request do
   describe 'POST /api/v1/budgets' do
     let(:valid_attributes) do
       {
+        name: 'March budget',
         start_date: '2020-03-01',
         end_date: '2020-03-31',
         income: 7000
@@ -56,6 +60,7 @@ RSpec.describe 'Budgets API', type: :request do
 
     let(:invalid_attributes) do
       {
+        name: '',
         start_date: '',
         end_date: '',
         income: ''

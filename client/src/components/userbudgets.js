@@ -19,7 +19,7 @@ class UserBudgets extends React.Component {
     const { budgets } = this.props;
     return (
       <div>
-        <h1>Your Budgets</h1>
+        <h2>Your Budgets</h2>
         {budgets.map(budget => (
           <div key={budget.id}>
             <div>
