@@ -69,6 +69,7 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
+        <h2 className="logo">Budget Tracker</h2>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -77,7 +78,7 @@ class Signup extends React.Component {
             id="nameInput-signup"
             placeholder="Enter your name"
             required
-          />
+          /><br />
           <input
             type="email"
             onChange={this.handleChange}
@@ -85,7 +86,7 @@ class Signup extends React.Component {
             id="emailInput-signup"
             placeholder="Enter your email"
             required
-          />
+          /><br />
           <input
             type="text"
             onChange={this.handleChange}
@@ -93,8 +94,8 @@ class Signup extends React.Component {
             id="password-signup"
             placeholder="Enter your password"
             required
-          />
-          <button type="submit">Sign Up</button>
+          /><br />
+          <button type="submit" className="app-btn">Sign Up</button>
         </form>
       </div>
     );
