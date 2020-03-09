@@ -20,7 +20,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        Testing the routes
         <h1>Budget Tracker</h1>
         { this.loggedIn
           ? (
@@ -34,9 +33,9 @@ class App extends React.Component {
             </div>
           )
           : (
-            <div>
+            <div className="login-links">
               <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup">Sign up</Link>
             </div>
           )}
         <Switch>
