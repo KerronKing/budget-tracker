@@ -25,7 +25,7 @@
 }
 .login-links a {
   border: 1px solid white;
-  border-radius: 10px;
+  border-radius: 7px;
   color: white;
   padding: 1rem;
   margin: 0 auto;
@@ -36,4 +36,33 @@
   background-color: white;
   color: rgb(49, 140, 179);
   text-decoration: underline;
+}
+.logo {
+  left: 32.5%;
+  position: absolute;
+  top: -60%;
+}
+.login-form {
+  position: relative;
+  top: 30%;
+}
+.user-input {
+  background-color: rgba(65, 181, 232, 1);
+  border: 1px solid white;
+  border-radius: 7px;
+  color: white;
+  margin-bottom: 2rem;
+  padding: 1.2rem;
+}
+.user-input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+.app-btn {
+  background-color: rgba(151, 228, 148, 1);
+  border: 1px solid rgba(151, 228, 148, 1);
+  border-radius: 7px;
+  color: white;
+  padding: 0.8rem;
+  width: 15%;
 }
