@@ -41,10 +41,10 @@ class UserBudgets extends React.Component {
               </div>
               <div className="b-detail links">
                 <div>
-                  <Link to={`/budgets/${budget.id}/budget_totals`}>Totals</Link>
+                  <Link to={`/budgets/${budget.id}/budgetTotals`}>Totals</Link>
                 </div>
                 <div>
-                  <Link to={`${budget.id}/budget_totals/new`}>New total</Link>
+                  <Link to={`${budget.id}/budgetTotals/new`}>New total</Link>
                 </div>
               </div>
             </div>

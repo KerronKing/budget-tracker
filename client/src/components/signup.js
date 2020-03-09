@@ -109,7 +109,7 @@ class Signup extends React.Component {
 const mapDispatchToProps = dispatch => ({
   userSignup: user => dispatch(userSignup(user)),
   getUser: (name, email) => dispatch(getUser(name, email)),
-  loggedIn: status => dispatch(status),
+  loggedIn: status => dispatch(loggedIn(status)),
 });
 
 Signup.propTypes = {

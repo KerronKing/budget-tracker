@@ -30,8 +30,8 @@ const App = ({ loggedIn }) => {
         <Route exact path="/user" component={UserProfile} />
         <Route exact path="/budgets" component={UserBudgets} />
         <Route exact path="/budgets/new" component={NewBudget} />
-        <Route exact path=":budgetId/budgetTotals/new" component={NewTotal} />
-        <Route exact path="/budgets/:budgetId/budget_totals" component={BudgetTotals} />
+        <Route exact path="/:budgetId/budgetTotals/new" component={NewTotal} />
+        <Route exact path="/budgets/:budgetId/budgetTotals" component={BudgetTotals} />
       </Switch>
     </div>
   );

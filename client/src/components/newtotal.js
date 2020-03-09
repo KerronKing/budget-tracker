@@ -91,8 +91,9 @@ class NewTotal extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>New Total Form</h1>
+      <div className="totals">
+        <h2>Budget Tracker</h2>
+        <h5>Daily Expenditure</h5>
         <form onSubmit={this.handleSubmit}>
           <input
             type="date"
@@ -102,55 +103,62 @@ class NewTotal extends React.Component {
             placeholder="Enter the date for this entry"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="rent"
-            placeholder="Enter today's rent payment (if any)"
+            placeholder="Enter rent payment"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="transport"
-            placeholder="Enter today's transport total"
+            placeholder="Enter transport total"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="food"
-            placeholder="Enter today's food total"
+            placeholder="Enter food total"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="entertainment"
-            placeholder="Enter today's entertainment total"
+            placeholder="Enter entertainment total"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="utilities"
-            placeholder="Enter today's utilities total"
+            placeholder="Enter utilities total"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="other"
-            placeholder="Enter today's other expenses"
+            placeholder="Enter other expenses"
             required
           />
-          <button type="submit">Submit Daily Expenditure</button>
+          <br />
+          <button type="submit" className="app-btn">Submit Daily Expenditure</button>
         </form>
       </div>
     );

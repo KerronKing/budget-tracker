@@ -125,3 +125,10 @@
   flex-direction: row;
   justify-content: space-evenly;
 }
+.totals {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.totals h2 {
+  margin-bottom: 1.5rem;
+}
