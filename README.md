@@ -17,6 +17,8 @@ This app was built using the following:
 ## Getting Started
 
 * Open the terminal and clone the repo
+* Launch the rails server (with the 'rails s' command)
+* cd into the 'client' folder and launch the UI with 'npm start'
 
 ## Contributing
 
