@@ -16,18 +16,37 @@ class UserBudgets extends React.Component {
   }
 
   render() {
-    const { budgets } = this.props;
+    const { name, budgets } = this.props;
     return (
-      <div>
-        <h2>Your Budgets</h2>
+      <div className="user-budgets">
+        <h2>Budget Tracker</h2>
+        <h3>{name}'s Budgets</h3>
         {budgets.map(budget => (
-          <div key={budget.id}>
-            <div>
-              <Link to={`/budgets/${budget.id}/budget_totals`}>Total</Link>
-              <p>{budget.start_date}</p>
-              <p>{budget.end_date}</p>
-              <p>{budget.income}</p>
-              <Link to={`${budget.id}/budget_totals/new`}>New total</Link>
+          <div key={budget.id} className="budget-details">
+            <div className="budget-name">
+              <p className="b-content">{budget.name}</p>
+            </div>
+            <div className="details-wrapper">
+              <div className="b-detail">
+                <p className="desc">Start Date:</p>
+                <p className="b-content">{budget.start_date}</p>
+              </div>
+              <div className="b-detail">
+                <p className="desc">End Date:</p>
+                <p className="b-content">{budget.end_date}</p>
+              </div>
+              <div className="b-detail">
+                <p className="desc">Income:</p>
+                <p className="b-content">{budget.income}</p>
+              </div>
+              <div className="b-detail links">
+                <div>
+                  <Link to={`/budgets/${budget.id}/budget_totals`}>Totals</Link>
+                </div>
+                <div>
+                  <Link to={`${budget.id}/budget_totals/new`}>New total</Link>
+                </div>
+              </div>
             </div>
           </div>
         ))}

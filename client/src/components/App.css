@@ -2,7 +2,6 @@
   background-color: rgba(65, 181, 232, 1);
   color: white;
   font-family: Helvetica, sans-serif;
-  height: 100vh;
   text-align: center;
 }
 .App h1 {
@@ -68,4 +67,61 @@
   color: white;
   padding: 0.8rem;
   width: 15%;
+}
+.user-budgets {
+  background-color: rgba(243, 244, 246, 1);
+  position: relative;
+  top: 5rem;
+}
+.user-budgets h2 {
+  position: relative;
+  top: -4rem;
+}
+.user-budgets h3 {
+  color: #9da9b5;
+}
+.budget-details {
+  /* border: 1px solid red; */
+  color: black;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  width: 45%;
+}
+.details-wrapper {
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.budget-name {
+  background-color: white;
+  font-size: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+.b-content { color: #475e77; }
+.b-detail {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  line-height: 2.5;
+  padding: 0.4rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  width: 45%
+}
+.b-detail a {
+  background-color: rgba(151, 228, 148, 1);
+  border-radius: 7px;
+  color: white;
+  line-height: 1;
+  padding: 0.5rem;
+}
+.desc { color: #d8dce1; }
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
