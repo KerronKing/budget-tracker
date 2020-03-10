@@ -2,7 +2,7 @@ import React from 'react';
 import { post } from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { userSignup, getUser, loggedIn } from '../actions/index';
+import { getUser, loggedIn } from '../actions/index';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -41,18 +41,19 @@ class Signup extends React.Component {
     const emailInput = document.getElementById('emailInput-signup');
     const passwordInput = document.getElementById('password-signup');
 
-    const { userSignup, history, getUser, loggedIn } = this.props;
+    const { history, getUser, loggedIn } = this.props;
     const { name, email, password } = this.state;
     const user = { user: this.state };
 
     const request = { auth: { email, password } };
-    post('/api/v1/login', request)
+    post('http://localhost:3001/api/v1/users', user)
       .then(response => {
         localStorage.setItem('jwt', response.data.jwt);
-        userSignup(user);
         getUser(name, email);
         loggedIn(true);
+        return post('http://localhost:3001/login', request)
       });
+    history.push('/budgets');
 
     this.setState({
       name: '',
@@ -107,13 +108,11 @@ class Signup extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userSignup: user => dispatch(userSignup(user)),
   getUser: (name, email) => dispatch(getUser(name, email)),
   loggedIn: status => dispatch(loggedIn(status)),
 });
 
 Signup.propTypes = {
-  userSignup: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
   loggedIn: PropTypes.func.isRequired,
   history: PropTypes.shape({

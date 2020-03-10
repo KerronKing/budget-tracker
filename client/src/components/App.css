@@ -2,6 +2,8 @@
   background-color: rgba(65, 181, 232, 1);
   color: white;
   font-family: Helvetica, sans-serif;
+  height: 100vh;
+  overflow: scroll;
   text-align: center;
 }
 .App h1 {

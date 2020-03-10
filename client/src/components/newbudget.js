@@ -1,12 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import axios from 'axios';
+import { post } from 'axios';
 import PropTypes from 'prop-types';
-import { createBudget } from '../actions/index';
 
 class NewBudget extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       start_date: '',
       end_date: '',
       income: 0,
@@ -18,7 +19,11 @@ class NewBudget extends React.Component {
 
   handleChange(e) {
     const { value, id } = e.target;
-    if (id === 'start-date') {
+    if (id === 'budget-name') {
+      this.setState({
+        name: value,
+      });
+    } else if (id === 'start-date') {
       this.setState({
         start_date: value,
       });
@@ -36,31 +41,51 @@ class NewBudget extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const budgetName = document.getElementById('budget-name');
     const startDate = document.getElementById('start-date');
     const endDate = document.getElementById('end-date');
     const incomeField = document.getElementById('income');
 
-    const { createBudget, history } = this.props;
-    const budget = { ...this.state };
-    createBudget(budget).then(() => {
-      history.push('/');
-    });
+    const { history } = this.props;
+    const budget = {
+      budget: this.state,
+    };
+
+    const token = `Bearer ${localStorage.getItem('jwt')}`;
+    axios({ method: 'post',
+            url: 'http://localhost:3001/api/v1/budgets',
+            data: budget, 
+            headers: { Authorization: token }
+          })
 
     this.setState({
+      name: '',
       start_date: '',
       end_date: '',
       income: 0,
     });
 
+    budgetName.value = '';
     startDate.value = '';
     endDate.value = '';
     incomeField.value = '';
+
+    history.push('/budgets');
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            onChange={this.handleChange}
+            className="user-input"
+            id="budget-name"
+            placeholder="Enter your budget's name"
+            required
+          />
+          <br />
           <input
             type="date"
             onChange={this.handleChange}
@@ -69,6 +94,7 @@ class NewBudget extends React.Component {
             placeholder="Enter your starting budget date"
             required
           />
+          <br />
           <input
             type="date"
             onChange={this.handleChange}
@@ -77,28 +103,24 @@ class NewBudget extends React.Component {
             placeholder="Enter your ending budget date"
             required
           />
+          <br />
           <input
             type="number"
             onChange={this.handleChange}
             className="user-input"
             id="income"
-            value="0"
             placeholder="Enter your salary/income for this period"
             required
           />
-          <button type="submit">Create Budget</button>
+          <br />
+          <button type="submit" className="app-btn">Create Budget</button>
         </form>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createBudget: budget => dispatch(createBudget(budget)),
-});
-
 NewBudget.propTypes = {
-  createBudget: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.shape.isRequired,
   }),
@@ -108,4 +130,4 @@ NewBudget.defaultProps = {
   history: PropTypes.shape,
 };
 
-export default connect(null, mapDispatchToProps)(NewBudget);
+export default NewBudget;
