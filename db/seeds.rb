@@ -5,12 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+5.times do
+  User.create(
+    name: Faker::Name.first_name,
+    email: Faker::Internet.email,
+    password: '123456'
+  )
+end
 
 5.times do
   Budget.create(
     start_date: Faker::Date.between(from: Date.today, to: 1.year.from_now),
     end_date: Faker::Date.between(from: 1.month.from_now, to: 1.year.from_now),
-    income: Faker::Number.within(range: 2000..10000)
+    income: Faker::Number.within(range: 2000..10000),
+    user_id: 1
   )
 end
 
@@ -22,6 +30,7 @@ end
     food: Faker::Number.within(range: 300..600),
     entertainment: Faker::Number.within(range: 0..1000),
     utilities: Faker::Number.within(range: 100..500),
-    other: Faker::Number.within(range: 0..200)
+    other: Faker::Number.within(range: 0..200),
+    budget_id: 1
   )
 end

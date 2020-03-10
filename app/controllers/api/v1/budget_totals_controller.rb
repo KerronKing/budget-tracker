@@ -1,4 +1,9 @@
 class Api::V1::BudgetTotalsController < ApplicationController
+  def index
+    @budget = Budget.find(params[:budget_id])
+    @budget_totals = @budget.budget_totals.all
+    render json: @budget_totals
+  end
 
   def new
     @budget = Budget.find(params[:budget_id])

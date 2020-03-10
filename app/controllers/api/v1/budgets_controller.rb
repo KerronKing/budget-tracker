@@ -1,7 +1,8 @@
 class Api::V1::BudgetsController < ApplicationController
+  before_action :authenticate_user
 
   def index
-    @budgets = Budget.all
+    @budgets = Budget.where('user_id = ?', current_user.id)
     render json: @budgets
   end
 
@@ -11,7 +12,7 @@ class Api::V1::BudgetsController < ApplicationController
   end
 
   def create
-    @budget = Budget.new(budget_params)
+    @budget = current_user.budgets.build(budget_params)
     if @budget.save
       render json: @budget, status: 201
     else
@@ -27,6 +28,6 @@ class Api::V1::BudgetsController < ApplicationController
   private
 
   def budget_params
-    params.require(:budget).permit(:start_date, :end_date, :income)
+    params.require(:budget).permit(:start_date, :end_date, :income, :user_id)
   end
 end

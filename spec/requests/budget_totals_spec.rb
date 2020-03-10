@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Budget Totals API', type: :request do
-  let!(:budget) { create(:budget) }
+  let!(:user) { create(:user) }
+  let!(:budget) { create(:budget, user_id: user.id) }
   let!(:budget_totals) { create_list(:budget_total, 5, budget_id: budget.id) }
   let(:budget_id) { budget.id }
   let(:budget_total_id) { budget_totals.first.id }
