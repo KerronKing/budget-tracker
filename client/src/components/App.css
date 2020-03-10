@@ -43,14 +43,13 @@ body { font-family: Helvetica, sans-serif; }
   color: rgb(49, 140, 179);
   text-decoration: underline;
 }
-.logo {
-  left: 41.5%;
-  position: absolute;
-  top: -60%;
-}
 .login-form {
-  position: relative;
-  top: 30%;
+  background-color: rgba(65, 181, 232, 1);
+  height: 100vh;
+}
+.logo {
+  padding-top: 1rem;
+  margin-bottom: 5rem;
 }
 .user-input {
   background-color: rgba(65, 181, 232, 1);
