@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist'
 import budgetReducer from './budget_reducer';
 import userReducer from './user_reducer';
 import statusReducer from './status_reducer';
@@ -11,4 +13,11 @@ const rootReducer = combineReducers({
   totals: totalReducer,
 });
 
-export default rootReducer;
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export default persistedReducer;
