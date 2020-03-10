@@ -134,3 +134,26 @@
 .totals h2 {
   margin-bottom: 1.5rem;
 }
+
+/* Footer */
+
+.footer {
+  background-color: #313843;
+  bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  width: 100%;
+}
+.footer a {
+  /* border: 1px solid red; */
+  color: #676c74;
+  padding: 2rem;
+  text-decoration: none;
+  width: 25%;
+}
+.footer a:hover {
+  background-color: rgba(65, 181, 232, 1);
+  color: white;
+  font-weight: bold;
+}
