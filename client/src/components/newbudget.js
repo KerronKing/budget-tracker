@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { post } from 'axios';
 import PropTypes from 'prop-types';
 
 class NewBudget extends React.Component {

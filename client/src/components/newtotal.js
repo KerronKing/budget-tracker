@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createTotal } from '../actions/index';
+import axios from 'axios';
 
 class NewTotal extends React.Component {
   constructor(props) {
@@ -64,11 +63,15 @@ class NewTotal extends React.Component {
     const other = document.getElementById('other');
 
     const { match: { params: { budgetId } } } = this.props;
-    const { createTotal, history } = this.props;
-    const total = { ...this.state };
-    createTotal(total, budgetId).then(() => {
-      history.push('/budgets');
-    });
+    const { history } = this.props;
+    const total = { budget_total: this.state };
+
+    const token = `Bearer ${localStorage.getItem('jwt')}`;
+    axios({ method: 'post',
+            url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`,
+            data: total, 
+            headers: { Authorization: token }
+          })
 
     this.setState({
       date: '',
@@ -87,6 +90,8 @@ class NewTotal extends React.Component {
     entertainment.value = '';
     utilities.value = '';
     other.value = '';
+
+    history.push('/budgets');
   }
 
   render() {
@@ -165,12 +170,7 @@ class NewTotal extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createTotal: (total, budgetId) => dispatch(createTotal(total, budgetId)),
-});
-
 NewTotal.propTypes = {
-  createTotal: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.shape.isRequired,
   }),
@@ -186,4 +186,4 @@ NewTotal.defaultProps = {
   match: PropTypes.shape,
 };
 
-export default connect(null, mapDispatchToProps)(NewTotal);
+export default NewTotal;
