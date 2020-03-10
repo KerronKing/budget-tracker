@@ -18,18 +18,22 @@ class UserBudgets extends React.Component {
   render() {
     const { name, budgets } = this.props;
     return (
-      <div className="user-budgets">
-        <h2>Budget Tracker</h2>
-        <h3>{name}'s Budgets</h3>
-        {budgets.map(budget => (
-          <div key={budget.id} className="budget-details">
-            <div className="budget-name">
-              <Link to={`/budgets/${budget.id}`}>
-                <p className="b-content">{budget.name}</p>
-              </Link>
+      <div>
+        <div className="header">
+          <h2>Budget Tracker</h2>
+        </div>
+        <h3 className="budget-page-title">{name}'s Budgets</h3>
+        <div className="user-budgets">
+          {budgets.map(budget => (
+            <div key={budget.id} className="budget-details">
+              <div className="budget-name">
+                <Link to={`/budgets/${budget.id}`}>
+                  <p className="b-content">{budget.name}</p>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }

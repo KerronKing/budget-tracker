@@ -73,25 +73,23 @@ body { font-family: Helvetica, sans-serif; }
 }
 .user-budgets {
   background-color: rgba(243, 244, 246, 1);
-  position: relative;
-  top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 5rem;
 }
-.user-budgets h2 {
-  position: relative;
-  top: -4rem;
-}
-.user-budgets h3 {
+.budget-page-title {
+  background-color: rgba(243, 244, 246, 1);
   color: #9da9b5;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 .budget-details {
-  /* border: 1px solid red; */
   color: black;
   margin: 0 auto;
-  margin-bottom: 4rem;
   width: 45%;
 }
 .details-wrapper {
-  /* border: 1px solid blue; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -99,8 +97,9 @@ body { font-family: Helvetica, sans-serif; }
 }
 .budget-name {
   background-color: white;
+  border: 2px solid #ecebec;
   font-size: 1.5rem;
-  padding: 2rem;
+  padding: 3rem;
   margin-bottom: 1rem;
 }
 .b-content { color: #475e77; }
@@ -180,6 +179,7 @@ body { font-family: Helvetica, sans-serif; }
   height: 100px;
   position: absolute;
   width: 100%;
+  z-index: 10;
 }
 .footer a {
   color: #676c74;
