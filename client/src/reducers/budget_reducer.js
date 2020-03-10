@@ -1,4 +1,4 @@
-import { GET_BUDGETS } from '../actions/index';
+import { GET_BUDGETS, GET_BUDGET } from '../actions/index';
 
 const initialState = {
   all: [],

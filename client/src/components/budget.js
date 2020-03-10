@@ -15,9 +15,13 @@ class Budget extends React.Component {
         getBudget(response.data);
       });
   }
-
   render() {
     const { budget } = this.props;
+    if (!budget) {
+      return (
+        <div>Budget data loading..</div>
+      )
+    }
     return (
       <div className="user-budgets">
         <h2>Budget Tracker</h2>
@@ -61,13 +65,13 @@ const mapDispatchToProps = dispatch => ({
   getBudget: budget => dispatch(getBudget(budget)),
 });
 
-UserBudgets.propTypes = {
+Budget.propTypes = {
   getBudget: PropTypes.func.isRequired,
   budget: PropTypes.instanceOf(Object),
 };
 
-UserBudgets.defaultProps = {
+Budget.defaultProps = {
   budgets: PropTypes.instanceOf(Object),
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserBudgets);
+export default connect(mapStateToProps, mapDispatchToProps)(Budget);
