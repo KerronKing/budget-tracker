@@ -8,6 +8,7 @@ import Logout from './logout';
 import Signup from './signup';
 import UserProfile from './userprofile';
 import UserBudgets from './userbudgets';
+import Budget from './budget';
 import NewBudget from './newbudget';
 import NewTotal from './newtotal';
 import BudgetTotals from './budget_totals';
@@ -29,6 +30,7 @@ const App = ({ loggedIn }) => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/user" component={UserProfile} />
         <Route exact path="/budgets" component={UserBudgets} />
+        <Route exact path="/budgets/:id" component={Budget} />
         <Route exact path="/budgets/new" component={NewBudget} />
         <Route exact path="/:budgetId/budgetTotals/new" component={NewTotal} />
         <Route exact path="/budgets/:budgetId/budgetTotals" component={BudgetTotals} />

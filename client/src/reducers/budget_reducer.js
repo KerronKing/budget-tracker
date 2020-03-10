@@ -2,6 +2,7 @@ import { GET_BUDGETS } from '../actions/index';
 
 const initialState = {
   all: [],
+  budget: null,
 };
 
 const budgetReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const budgetReducer = (state = initialState, action) => {
       return {
         ...state,
         all: action.budgets,
+      };
+    case GET_BUDGET:
+      return {
+        ...state,
+        budget: action.budget,
       };
     default:
       return state;
