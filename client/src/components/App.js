@@ -15,10 +15,12 @@ import BudgetTotals from './budget_totals';
 import './App.css';
 import Footer from './footer';
 
-const App = ({ loggedIn, name }) => {
+const App = ({ userStatus }) => {
   let footer;
-  if (loggedIn) {
+  if (userStatus) {
     footer = <Footer />;
+  } else {
+    footer = <div className="hidden">hidden</div>
   }
   return (
     <div className="App">
@@ -40,12 +42,11 @@ const App = ({ loggedIn, name }) => {
 };
 
 const mapStateToProps = state => ({
-  loggedIn: state.status.status,
-  name: state.users.name,
+  userStatus: state.status.status,
 });
 
 App.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
+  userStatus: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, null)(App);

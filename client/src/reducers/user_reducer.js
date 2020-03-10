@@ -14,7 +14,11 @@ const userReducer = (state = initialState, action) => {
         email: action.email,
       };
     case REMOVE_USER:
-      return Object.assign(state, {});
+      return {
+        ...state,
+        name: '',
+        email: '',
+      };
     default:
       return state;
   }
