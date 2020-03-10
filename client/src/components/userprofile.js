@@ -1,14 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const UserProfile = ({ name, email }) => (
   <div>
-    <h1>Profile</h1>
-    <h2>{name}</h2>
-    <p>{email}</p>
-    <Link to="/budgets" />
+    <div className="header">
+      <h2>Profile</h2>
+    </div>
+    <div className="user-info">
+      <div className="profile-name">
+        <img src="https://img.icons8.com/windows/32/000000/user.png" alt="user icon" />
+        <h3>{name}</h3>
+      </div>
+      <p className="profile-email">{email}</p>
+    </div>
+    
   </div>
 );
 

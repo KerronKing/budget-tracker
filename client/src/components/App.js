@@ -15,7 +15,7 @@ import BudgetTotals from './budget_totals';
 import './App.css';
 import Footer from './footer';
 
-const App = ({ loggedIn }) => {
+const App = ({ loggedIn, name }) => {
   let footer;
   if (loggedIn) {
     footer = <Footer />;
@@ -41,6 +41,7 @@ const App = ({ loggedIn }) => {
 
 const mapStateToProps = state => ({
   loggedIn: state.status.status,
+  name: state.users.name,
 });
 
 App.propTypes = {
