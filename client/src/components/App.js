@@ -32,7 +32,7 @@ const App = ({ loggedIn }) => {
         <Route exact path="/budgets" component={UserBudgets} />
         <Route exact path="/budgets/:id" component={Budget} />
         <Route exact path="/budgets/new" component={NewBudget} />
-        <Route exact path="/:budgetId/budgetTotals/new" component={NewTotal} />
+        <Route exact path="/budgets/:budgetId/budgetTotals/new" component={NewTotal} />
         <Route exact path="/budgets/:budgetId/budgetTotals" component={BudgetTotals} />
       </Switch>
     </div>

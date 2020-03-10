@@ -3,6 +3,7 @@ const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
 const GET_BUDGETS = 'GET_BUDGETS';
 const GET_BUDGET = 'GET_BUDGET';
+const GET_TOTALS = 'GET_TOTALS';
 
 const loggedIn = status => ({
   type: LOGGED_IN,
@@ -29,10 +30,16 @@ const getBudget = budget => ({
   budget,
 });
 
+const getTotals = totals => ({
+  type: GET_TOTALS,
+  totals,
+});
+
 export {
   loggedIn, LOGGED_IN,
   getUser, GET_USER,
   removeUser, REMOVE_USER,
   getBudgets, GET_BUDGETS,
   getBudget, GET_BUDGET,
+  getTotals, GET_TOTALS,
 };

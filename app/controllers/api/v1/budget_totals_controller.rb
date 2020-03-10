@@ -20,11 +20,7 @@ class Api::V1::BudgetTotalsController < ApplicationController
   def create
     @budget = Budget.find(params[:budget_id])
     @budget_total = @budget.budget_totals.build(budget_total_params)
-    if @budget_total.save
-      render json: @budget_total, status: 200
-    else
-      render json: { errors: @budget_total.errors.full_messages }, status: 422
-    end
+    render json: @budget_total, adapter: :attributes, status: 201 if @budget_total.save
   end
 
   def update
