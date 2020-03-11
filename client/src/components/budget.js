@@ -23,9 +23,11 @@ class Budget extends React.Component {
       )
     }
     return (
-      <div className="user-budgets">
-        <h2>Budget Tracker</h2>
-        <div key={budget.id} className="budget-details">
+      <div className="single-budget-area">
+        <div className="header">
+          <h2>Budget Tracker</h2>
+        </div>
+        <div key={budget.id} className="single-budgets">
           <div className="budget-name">
             <p className="b-content">{budget.name}</p>
           </div>

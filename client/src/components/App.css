@@ -113,27 +113,29 @@ body { font-family: Helvetica, sans-serif; }
 .b-content { color: #475e77; }
 .b-detail {
   background-color: white;
+  border: 2px solid #ecebec;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  line-height: 2.5;
-  padding: 0.4rem;
-  margin-bottom: 0.5rem;
+  line-height: 4;
+  margin-bottom: 1rem;
   text-align: center;
   width: 45%
 }
 .b-detail a {
-  background-color: rgba(151, 228, 148, 1);
   border-radius: 7px;
   color: white;
-  line-height: 1;
+  font-weight: bold;
   padding: 0.5rem;
+}
+.b-detail a:hover {
+  background-color: white;
+  color: rgba(151, 228, 148, 1);
+  text-decoration: none;
 }
 .desc { color: #d8dce1; }
 .links {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  background-color: rgba(151, 228, 148, 1);
 }
 .totals {
   padding-top: 1rem;
@@ -175,6 +177,19 @@ body { font-family: Helvetica, sans-serif; }
   font-size: 0.9rem;
   position: relative;
   right: 31.4rem;
+}
+
+/* Budgets Page */
+
+.single-budget-area {
+  background-color: rgba(243, 244, 246, 1);
+  height: 100%;
+}
+.single-budgets {
+  color: black;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 45%;
 }
 
 /* Footer */
