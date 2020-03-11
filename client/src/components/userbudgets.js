@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getBudgets } from '../actions/index';
+import { getBudgets, deleteBudget } from '../actions/index';
 
 class UserBudgets extends React.Component {
   componentDidMount() {
@@ -17,6 +17,7 @@ class UserBudgets extends React.Component {
 
   render() {
     const { name, budgets } = this.props;
+    const token = `Bearer ${localStorage.getItem('jwt')}`;
     return (
       <div>
         <div className="header">
@@ -30,6 +31,12 @@ class UserBudgets extends React.Component {
                 <Link to={`/budgets/${budget.id}`}>
                   <p className="b-content">{budget.name}</p>
                 </Link>
+                <button onClick={() =>
+                  axios({ method: 'delete',
+                          url: `http://localhost:3001/api/v1/budgets/${budget.id}`,
+                          headers: { Authorization: token } })
+                  .then(() => window.location.reload(false)
+                  )}>Delete</button>
               </div>
             </div>
           ))}

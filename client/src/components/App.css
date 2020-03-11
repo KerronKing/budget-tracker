@@ -110,6 +110,16 @@ body { font-family: Helvetica, sans-serif; }
   padding: 3rem;
   margin-bottom: 1rem;
 }
+.budget-name button {
+  border: none;
+  color: #f2181f;
+  padding: 0.3rem;
+}
+.budget-name button:hover {
+  background-color: #f2181f;
+  border-radius: 7px;
+  color: white;
+}
 .b-content { color: #475e77; }
 .b-detail {
   background-color: white;
@@ -226,6 +236,16 @@ body { font-family: Helvetica, sans-serif; }
 }
 .total-detail span {
   color: rgba(151, 228, 148, 1);
+}
+.total-detail button {
+  border: none;
+  color: #f2181f;
+  padding: 0.3rem;
+}
+.total-detail button:hover {
+  background-color: #f2181f;
+  border-radius: 7px;
+  color: white;
 }
 .date-span { color: #f2181f !important; }
 

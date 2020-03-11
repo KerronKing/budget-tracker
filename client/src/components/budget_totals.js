@@ -16,42 +16,53 @@ class BudgetTotals extends React.Component {
  }
  
  render() {
-   const { budgetTotals } = this.props;
-   return (
-     <div className="totals">
-       <div className="header">
-        <h2>Budget Tracker</h2>
+    const token = `Bearer ${localStorage.getItem('jwt')}`;
+    const { budgetTotals } = this.props;
+    const { match: { params: { budgetId } } } = this.props;
+    return (
+      <div className="totals">
+        <div className="header">
+          <h2>Budget Tracker</h2>
+        </div>
+        <div className="totals-area">
+          { budgetTotals.map(budgetTotal => (
+            <div key={budgetTotal.id} className="each-total">
+              <div className="total-detail">
+                <p>Date: <span className="date-span">{budgetTotal.date}</span></p>
+              </div>
+              <div className="total-detail">
+                <p>Rent: <span>{budgetTotal.rent}</span></p>
+              </div>
+              <div className="total-detail">
+                <p>Transport: <span>{budgetTotal.transport}</span></p>
+              </div>
+              <div className="total-detail">
+                <p>Food: <span>{budgetTotal.food}</span></p>
+              </div>
+              <div className="total-detail">
+                <p>Entertainment: <span>{budgetTotal.entertainment}</span></p>
+              </div>
+              <div className="total-detail">
+                <p>Utilities: <span>{budgetTotal.utilities}</span></p>
+              </div>
+              <div className="total-detail">
+                <p>Other expenses: <span>{budgetTotal.other}</span></p>
+              </div>
+              <div className="total-detail">
+                <button onClick={() =>
+                  axios({ method: 'delete',
+                          url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals/${budgetTotal.id}`,
+                          headers: { Authorization: token } })
+                  .then(() => window.location.reload(false)
+                  )}>Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="totals-area">
-        { budgetTotals.map(budgetTotal => (
-          <div key={budgetTotal.id} className="each-total">
-            <div className="total-detail">
-              <p>Date: <span className="date-span">{budgetTotal.date}</span></p>
-            </div>
-            <div className="total-detail">
-              <p>Rent: <span>{budgetTotal.rent}</span></p>
-            </div>
-            <div className="total-detail">
-              <p>Transport: <span>{budgetTotal.transport}</span></p>
-            </div>
-            <div className="total-detail">
-              <p>Food: <span>{budgetTotal.food}</span></p>
-            </div>
-            <div className="total-detail">
-              <p>Entertainment: <span>{budgetTotal.entertainment}</span></p>
-            </div>
-            <div className="total-detail">
-              <p>Utilities: <span>{budgetTotal.utilities}</span></p>
-            </div>
-            <div className="total-detail">
-              <p>Other expenses: <span>{budgetTotal.other}</span></p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-   );
- }
+    );
+  }
 }
  
 const mapStateToProps = state => ({
