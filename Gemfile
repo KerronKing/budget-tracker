@@ -26,6 +26,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "rack-cors"
 gem 'knock'
 gem 'jwt'
+# gem 'foreman'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -33,6 +34,7 @@ group :development, :test do
   gem "guard-rspec"
   gem "rspec-rails"
   gem 'faker'
+  gem 'foreman', '~> 0.82.0'
 end
 
 group :development do
