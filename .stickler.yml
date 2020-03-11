@@ -1,6 +1,6 @@
 linters:
   eslint:
-    config: 'client/.eslintrc.json'
+    config: 'budget-tracker-frontend/client/.eslintrc.json'
   rubocop:
     display_cop_names: true
     config: './rubocop.yml'
