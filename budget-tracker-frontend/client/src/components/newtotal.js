@@ -5,51 +5,8 @@ import axios from 'axios';
 class NewTotal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      date: '',
-      rent: 0,
-      transport: 0,
-      food: 0,
-      entertainment: 0,
-      utilities: 0,
-      other: 0,
-    };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
-    const { value, id } = e.target;
-    if (id === 'date') {
-      this.setState({
-        date: value,
-      });
-    } else if (id === 'rent') {
-      this.setState({
-        rent: value,
-      });
-    } else if (id === 'transport') {
-      this.setState({
-        transport: value,
-      });
-    } else if (id === 'food') {
-      this.setState({
-        food: value,
-      });
-    } else if (id === 'entertainment') {
-      this.setState({
-        entertainment: value,
-      });
-    } else if (id === 'utilities') {
-      this.setState({
-        utilities: value,
-      });
-    } else if (id === 'other') {
-      this.setState({
-        other: value,
-      });
-    }
   }
 
   handleSubmit(e) {
@@ -64,7 +21,17 @@ class NewTotal extends React.Component {
 
     const { match: { params: { budgetId } } } = this.props;
     const { history } = this.props;
-    const total = { budget_total: this.state };
+    const total = {
+      budget_total: {
+        date: date.value,
+        rent: rent.value,
+        transport: transport.value,
+        food: food.value,
+        entertainment: entertainment.value,
+        utilities: utilities.value,
+        other: other.value,
+      },
+    };
 
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     axios({
@@ -72,17 +39,8 @@ class NewTotal extends React.Component {
       url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`,
       data: total,
       headers: { Authorization: token },
-    });
-
-    this.setState({
-      date: '',
-      rent: 0,
-      transport: 0,
-      food: 0,
-      entertainment: 0,
-      utilities: 0,
-      other: 0,
-    });
+    })
+      .then(() => history.push('/budgets'));
 
     date.value = '';
     rent.value = '';
@@ -91,8 +49,6 @@ class NewTotal extends React.Component {
     entertainment.value = '';
     utilities.value = '';
     other.value = '';
-
-    history.push('/budgets');
   }
 
   render() {
@@ -103,7 +59,6 @@ class NewTotal extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="date"
-            onChange={this.handleChange}
             className="user-input"
             id="date"
             placeholder="Enter the date for this entry"
@@ -112,7 +67,6 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
-            onChange={this.handleChange}
             className="user-input"
             id="rent"
             placeholder="Enter rent payment"
@@ -121,7 +75,6 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
-            onChange={this.handleChange}
             className="user-input"
             id="transport"
             placeholder="Enter transport total"
@@ -130,7 +83,6 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
-            onChange={this.handleChange}
             className="user-input"
             id="food"
             placeholder="Enter food total"
@@ -139,7 +91,6 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
-            onChange={this.handleChange}
             className="user-input"
             id="entertainment"
             placeholder="Enter entertainment total"
@@ -148,7 +99,6 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
-            onChange={this.handleChange}
             className="user-input"
             id="utilities"
             placeholder="Enter utilities total"
@@ -157,7 +107,6 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
-            onChange={this.handleChange}
             className="user-input"
             id="other"
             placeholder="Enter other expenses"
