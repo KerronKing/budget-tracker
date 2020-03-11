@@ -51,7 +51,7 @@ class Signup extends React.Component {
         localStorage.setItem('jwt', response.data.jwt);
         getUser(name, email);
         loggedIn(true);
-        return post('http://localhost:3001/login', request)
+        return post('http://localhost:3001/login', request);
       });
     history.push('/budgets');
 

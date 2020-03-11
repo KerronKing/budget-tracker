@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const UserProfile = ({ name, email }) => (
@@ -15,7 +14,6 @@ const UserProfile = ({ name, email }) => (
       </div>
       <p className="profile-email">{email}</p>
     </div>
-    
   </div>
 );
 

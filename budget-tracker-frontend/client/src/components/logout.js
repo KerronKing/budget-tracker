@@ -9,8 +9,8 @@ const Logout = ({ removeUser, loggedIn }) => {
     localStorage.removeItem('jwt');
     loggedIn(false);
     removeUser();
-  })
-  
+  });
+
   return <Redirect to="/" />;
 };
 

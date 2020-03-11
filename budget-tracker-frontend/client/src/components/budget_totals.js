@@ -3,19 +3,19 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTotals } from '../actions/index';
- 
+
 class BudgetTotals extends React.Component {
- componentDidMount() {
+  componentDidMount() {
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     const { match: { params: { budgetId } } } = this.props;
     const { getTotals } = this.props;
     axios({ method: 'get', url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`, headers: { Authorization: token } })
       .then(response => {
         getTotals(response.data);
-      })  
- }
- 
- render() {
+      });
+  }
+
+  render() {
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     const { budgetTotals } = this.props;
     const { match: { params: { budgetId } } } = this.props;
@@ -28,33 +28,72 @@ class BudgetTotals extends React.Component {
           { budgetTotals.map(budgetTotal => (
             <div key={budgetTotal.id} className="each-total">
               <div className="total-detail">
-                <p>Date: <span className="date-span">{budgetTotal.date}</span></p>
+                <p>
+                  Date:
+                  <span className="date-span">
+                    {budgetTotal.date}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <p>Rent: <span>{budgetTotal.rent}</span></p>
+                <p>
+                  Rent:
+                  <span>
+                    {budgetTotal.rent}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <p>Transport: <span>{budgetTotal.transport}</span></p>
+                <p>
+                  Transport:
+                  <span>
+                    {budgetTotal.transport}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <p>Food: <span>{budgetTotal.food}</span></p>
+                <p>
+                  Food:
+                  <span>
+                    {budgetTotal.food}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <p>Entertainment: <span>{budgetTotal.entertainment}</span></p>
+                <p>
+                  Entertainment:
+                  <span>
+                    {budgetTotal.entertainment}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <p>Utilities: <span>{budgetTotal.utilities}</span></p>
+                <p>
+                  Utilities:
+                  <span>
+                    {budgetTotal.utilities}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <p>Other expenses: <span>{budgetTotal.other}</span></p>
+                <p>
+                  Other expenses:
+                  <span>
+                    {budgetTotal.other}
+                  </span>
+                </p>
               </div>
               <div className="total-detail">
-                <button onClick={() =>
-                  axios({ method: 'delete',
-                          url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals/${budgetTotal.id}`,
-                          headers: { Authorization: token } })
-                  .then(() => window.location.reload(false)
-                  )}>Delete
+                <button
+                  type="submit"
+                  onClick={() => axios({
+                    method: 'delete',
+                    url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals/${budgetTotal.id}`,
+                    headers: { Authorization: token },
+                  })
+                    .then(() => window.location.reload(false))}
+                >
+                  Delete
                 </button>
               </div>
             </div>
@@ -64,28 +103,27 @@ class BudgetTotals extends React.Component {
     );
   }
 }
- 
+
 const mapStateToProps = state => ({
- budgetTotals: state.totals.all,
+  budgetTotals: state.totals.all,
 });
- 
+
 const mapDispatchToProps = dispatch => ({
- getTotals: totals => dispatch(getTotals(totals)),
+  getTotals: totals => dispatch(getTotals(totals)),
 });
- 
+
 BudgetTotals.propTypes = {
- match: PropTypes.instanceOf(Object).isRequired,
- getTotals: PropTypes.func.isRequired,
- budgetTotals: PropTypes.arrayOf(
-   PropTypes.shape({
-     rent: PropTypes.number.isRequired,
-   }),
- ),
+  match: PropTypes.instanceOf(Object).isRequired,
+  getTotals: PropTypes.func.isRequired,
+  budgetTotals: PropTypes.arrayOf(
+    PropTypes.shape({
+      rent: PropTypes.number.isRequired,
+    }),
+  ),
 };
- 
+
 BudgetTotals.defaultProps = {
- budgetTotals: PropTypes.instanceOf(Object),
+  budgetTotals: PropTypes.instanceOf(Object),
 };
- 
+
 export default connect(mapStateToProps, mapDispatchToProps)(BudgetTotals);
- 

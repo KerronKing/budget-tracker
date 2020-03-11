@@ -15,12 +15,13 @@ class Budget extends React.Component {
         getBudget(response.data);
       });
   }
+
   render() {
     const { budget } = this.props;
     if (!budget) {
       return (
         <div>Budget data loading..</div>
-      )
+      );
     }
     return (
       <div className="single-budget-area">
@@ -68,12 +69,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Budget.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
   getBudget: PropTypes.func.isRequired,
   budget: PropTypes.instanceOf(Object),
 };
 
 Budget.defaultProps = {
-  budgets: PropTypes.instanceOf(Object),
+  budget: PropTypes.instanceOf(Object),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Budget);

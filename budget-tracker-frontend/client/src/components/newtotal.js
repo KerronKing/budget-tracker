@@ -67,11 +67,12 @@ class NewTotal extends React.Component {
     const total = { budget_total: this.state };
 
     const token = `Bearer ${localStorage.getItem('jwt')}`;
-    axios({ method: 'post',
-            url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`,
-            data: total, 
-            headers: { Authorization: token }
-          })
+    axios({
+      method: 'post',
+      url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`,
+      data: total,
+      headers: { Authorization: token },
+    });
 
     this.setState({
       date: '',

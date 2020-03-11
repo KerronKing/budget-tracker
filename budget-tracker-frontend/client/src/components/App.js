@@ -20,7 +20,7 @@ const App = ({ userStatus }) => {
   if (userStatus) {
     footer = <Footer />;
   } else {
-    footer = <div className="hidden">hidden</div>
+    footer = <div className="hidden">hidden</div>;
   }
   return (
     <div className="App">

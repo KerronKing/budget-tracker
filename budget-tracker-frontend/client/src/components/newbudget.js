@@ -51,11 +51,12 @@ class NewBudget extends React.Component {
     };
 
     const token = `Bearer ${localStorage.getItem('jwt')}`;
-    axios({ method: 'post',
-            url: 'http://localhost:3001/api/v1/budgets',
-            data: budget, 
-            headers: { Authorization: token }
-          })
+    axios({
+      method: 'post',
+      url: 'http://localhost:3001/api/v1/budgets',
+      data: budget,
+      headers: { Authorization: token },
+    });
 
     this.setState({
       name: '',

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist'
+import { persistReducer } from 'redux-persist';
 import budgetReducer from './budget_reducer';
 import userReducer from './user_reducer';
 import statusReducer from './status_reducer';
@@ -18,6 +18,6 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export default persistedReducer;
