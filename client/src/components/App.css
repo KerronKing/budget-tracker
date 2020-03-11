@@ -138,11 +138,16 @@ body { font-family: Helvetica, sans-serif; }
   background-color: rgba(151, 228, 148, 1);
 }
 .totals {
+  background-color: rgba(65, 181, 232, 1);
+  height: auto;
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 5rem;
 }
 .totals h2 {
   margin-bottom: 1.5rem;
+}
+.totals form {
+  padding-bottom: 5rem;
 }
 
 /* User Profile */
@@ -191,6 +196,38 @@ body { font-family: Helvetica, sans-serif; }
   margin-top: 2rem;
   width: 45%;
 }
+
+/* Budget Totals Page */
+
+.totals-area {
+  background-color: rgba(243, 244, 246, 1);
+  height: auto;
+  padding: 2rem;
+}
+.each-total {
+  border: 2px solid #ecebec;
+  border-radius: 7px;
+  color: #475e77;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  width: 80%;
+}
+.total-detail {
+  background-color: white;
+  border: 1px solid #ecebec;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 30%;
+}
+.total-detail span {
+  color: rgba(151, 228, 148, 1);
+}
+.date-span { color: #f2181f !important; }
 
 /* Footer */
 
