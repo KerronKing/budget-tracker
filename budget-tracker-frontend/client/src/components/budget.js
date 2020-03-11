@@ -10,7 +10,8 @@ class Budget extends React.Component {
     const { getBudget } = this.props;
     const { match: { params: { id } } } = this.props;
     const token = `Bearer ${localStorage.getItem('jwt')}`;
-    axios({ method: 'get', url: `http://localhost:3001/api/v1/budgets/${id}`, headers: { Authorization: token } })
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
+    axios({ method: 'get', url: `${apiUrl}api/v1/budgets/${id}`, headers: { Authorization: token } })
       .then(response => {
         getBudget(response.data);
       });

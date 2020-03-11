@@ -8,8 +8,9 @@ import { getBudgets } from '../actions/index';
 class UserBudgets extends React.Component {
   componentDidMount() {
     const { getBudgets } = this.props;
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
     const token = `Bearer ${localStorage.getItem('jwt')}`;
-    axios({ method: 'get', url: 'http://localhost:3001/api/v1/budgets', headers: { Authorization: token } })
+    axios({ method: 'get', url: `${apiUrl}api/v1/budgets`, headers: { Authorization: token } })
       .then(response => {
         getBudgets(response.data);
       });
@@ -18,6 +19,7 @@ class UserBudgets extends React.Component {
   render() {
     const { name, budgets } = this.props;
     const token = `Bearer ${localStorage.getItem('jwt')}`;
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
     return (
       <div>
         <div className="header">
@@ -38,7 +40,7 @@ class UserBudgets extends React.Component {
                   type="submit"
                   onClick={() => axios({
                     method: 'delete',
-                    url: `http://localhost:3001/api/v1/budgets/${budget.id}`,
+                    url: `${apiUrl}api/v1/budgets/${budget.id}`,
                     headers: { Authorization: token },
                   })
                     .then(() => window.location.reload(false))}

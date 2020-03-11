@@ -49,7 +49,8 @@ class Login extends React.Component {
     passwordLogin.value = '';
 
     const request = { auth: { email, password } };
-    post('http://localhost:3001/login', request)
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
+    post(`${apiUrl}login`, request)
       .then(response => {
         localStorage.setItem('jwt', response.data.jwt);
         history.push('/budgets');

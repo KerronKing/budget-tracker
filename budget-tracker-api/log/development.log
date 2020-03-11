@@ -18262,3 +18262,446 @@ Completed 200 OK in 51ms (Views: 40.8ms | ActiveRecord: 2.1ms | Allocations: 113
 
 
   [1m[35m (170.6ms)[0m  [1m[31mROLLBACK[0m
+Started POST "/login" for ::1 at 2020-03-11 14:01:54 -0400
+  [1m[35m (631.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"email"=>"king@example.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"email"=>"king@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (870.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "king@example.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Knock::AuthToken (0.26ms)
+Completed 201 Created in 5645ms (Views: 400.1ms | ActiveRecord: 2538.5ms | Allocations: 11386)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:02:24 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (51.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (185.3ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (176.7ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.7ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1489.91ms)
+Completed 200 OK in 3771ms (Views: 2734.6ms | ActiveRecord: 422.2ms | Allocations: 50566)
+
+
+Started POST "/api/v1/budgets" for ::1 at 2020-03-11 14:02:49 -0400
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:02:49 -0400
+Processing by Api::V1::BudgetsController#create as HTML
+  Parameters: {"budget"=>{"name"=>"Test Budget", "start_date"=>"2020-03-11", "end_date"=>"2020-03-18", "income"=>"10000"}}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:16:in `create'
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (41.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (1.0ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.7ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (21.72ms)
+Completed 200 OK in 71ms (Views: 22.8ms | ActiveRecord: 44.6ms | Allocations: 11509)
+
+
+  [1m[36mBudget Create (1206.2ms)[0m  [1m[32mINSERT INTO "budgets" ("name", "start_date", "end_date", "income", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Test Budget"], ["start_date", "2020-03-11"], ["end_date", "2020-03-18"], ["income", 10000], ["created_at", "2020-03-11 18:02:50.070049"], ["updated_at", "2020-03-11 18:02:50.070049"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/budgets_controller.rb:16:in `create'
+  [1m[35m (59.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:17:in `create'
+[active_model_serializers] Rendered BudgetSerializer with ActiveModelSerializers::Adapter::Attributes (4.23ms)
+Completed 201 Created in 1424ms (Views: 4.6ms | ActiveRecord: 1268.6ms | Allocations: 19877)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:03:03 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.6ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (1.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.8ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (1.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (4.2ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (47.99ms)
+Completed 200 OK in 57ms (Views: 43.5ms | ActiveRecord: 9.0ms | Allocations: 14161)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:05:28 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (400.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (63.6ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (77.1ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (5.7ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (191.68ms)
+Completed 200 OK in 814ms (Views: 130.8ms | ActiveRecord: 547.7ms | Allocations: 14145)
+
+
+Started POST "/api/v1/budgets" for ::1 at 2020-03-11 14:06:43 -0400
+Processing by Api::V1::BudgetsController#create as HTML
+  Parameters: {"budget"=>{"name"=>"KK Budget", "start_date"=>"2020-03-11", "end_date"=>"2020-03-18", "income"=>"3000"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:16:in `create'
+  [1m[36mBudget Create (46.9ms)[0m  [1m[32mINSERT INTO "budgets" ("name", "start_date", "end_date", "income", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "KK Budget"], ["start_date", "2020-03-11"], ["end_date", "2020-03-18"], ["income", 3000], ["created_at", "2020-03-11 18:06:43.207772"], ["updated_at", "2020-03-11 18:06:43.207772"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/budgets_controller.rb:16:in `create'
+  [1m[35m (78.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:16:in `create'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:17:in `create'
+[active_model_serializers] Rendered BudgetSerializer with ActiveModelSerializers::Adapter::Attributes (4.47ms)
+Completed 201 Created in 145ms (Views: 5.0ms | ActiveRecord: 126.1ms | Allocations: 5348)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:06:43 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.4ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.62ms)
+Completed 200 OK in 35ms (Views: 29.9ms | ActiveRecord: 2.4ms | Allocations: 16913)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:06:44 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.7ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.6ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (1.0ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (54.15ms)
+Completed 200 OK in 64ms (Views: 54.8ms | ActiveRecord: 5.1ms | Allocations: 16913)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:09:29 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (7.2ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.6ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (2.0ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (9.1ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (1.9ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (80.2ms)
+Completed 200 OK in 130ms (Views: 85.7ms | ActiveRecord: 27.7ms | Allocations: 16913)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:12:19 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.8ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (359.78ms)
+Completed 200 OK in 390ms (Views: 369.3ms | ActiveRecord: 3.9ms | Allocations: 16921)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:12:57 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (11.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.6ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.9ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.6ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (34.24ms)
+Completed 200 OK in 53ms (Views: 34.5ms | ActiveRecord: 14.4ms | Allocations: 16913)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:23:40 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.9ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.5ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (36.36ms)
+Completed 200 OK in 60ms (Views: 40.8ms | ActiveRecord: 4.5ms | Allocations: 17037)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:25:44 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.6ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (1.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (32.49ms)
+Completed 200 OK in 42ms (Views: 32.9ms | ActiveRecord: 5.1ms | Allocations: 16913)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:26:30 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.7ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.4ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.7ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (56.0ms)
+Completed 200 OK in 68ms (Views: 57.8ms | ActiveRecord: 5.2ms | Allocations: 16913)
+
+
+Started GET "/api/v1/budgets" for ::1 at 2020-03-11 14:26:35 -0400
+Processing by Api::V1::BudgetsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBudget Load (0.4ms)[0m  [1m[34mSELECT "budgets".* FROM "budgets" WHERE (user_id = 1)[0m
+  ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 8]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mBudgetTotal Load (0.3ms)[0m  [1m[34mSELECT "budget_totals".* FROM "budget_totals" WHERE "budget_totals"."budget_id" = $1[0m  [["budget_id", 9]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/budgets_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (32.76ms)
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 2.6ms | Allocations: 16913)
+
+
+  [1m[35m (50.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (86.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1285.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "budget_tracker_development"[0m
+  [1m[35m (261.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "budget_tracker_test"[0m
+  [1m[35m (8722.2ms)[0m  [1m[35mCREATE DATABASE "budget_tracker_development" ENCODING = 'unicode'[0m
+  [1m[35m (2983.5ms)[0m  [1m[35mCREATE DATABASE "budget_tracker_test" ENCODING = 'unicode'[0m
+  [1m[35m (730.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (71.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (22.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6224694853432145265)[0m
+  [1m[35m (14.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBudgets (20200229164832)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (812.7ms)[0m  [1m[35mCREATE TABLE "budgets" ("id" bigserial primary key, "name" character varying, "start_date" date, "end_date" date, "income" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200229164832"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBudgetTotals (20200229165816)
+  [1m[35m (40.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (398.4ms)[0m  [1m[35mCREATE TABLE "budget_totals" ("id" bigserial primary key, "budget_id" bigint NOT NULL, "date" date, "rent" integer, "transport" integer, "food" integer, "entertainment" integer, "utilities" integer, "other" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_ccc29daaeb"
+FOREIGN KEY ("budget_id")
+  REFERENCES "budgets" ("id")
+)[0m
+  [1m[35m (49.7ms)[0m  [1m[35mCREATE  INDEX  "index_budget_totals_on_budget_id" ON "budget_totals"  ("budget_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200229165816"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20200303133802)
+  [1m[35m (41.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (61.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200303133802"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnToBudgets (20200303133906)
+  [1m[35m (42.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.7ms)[0m  [1m[35mALTER TABLE "budgets" ADD "user_id" bigint[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX  "index_budgets_on_user_id" ON "budgets"  ("user_id")[0m
+  [1m[35m (36.9ms)[0m  [1m[35mALTER TABLE "budgets" ADD CONSTRAINT "fk_rails_e708f32fd8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200303133906"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (10.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (18.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-11 18:44:12.501334"], ["updated_at", "2020-03-11 18:44:12.501334"]]
+  [1m[35m (41.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6224694853432145265)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

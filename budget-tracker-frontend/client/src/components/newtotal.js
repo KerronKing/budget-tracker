@@ -33,10 +33,11 @@ class NewTotal extends React.Component {
       },
     };
 
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     axios({
       method: 'post',
-      url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`,
+      url: `${apiUrl}api/v1/budgets/${budgetId}/budget_totals`,
       data: total,
       headers: { Authorization: token },
     })

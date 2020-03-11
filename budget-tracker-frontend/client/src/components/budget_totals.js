@@ -9,7 +9,8 @@ class BudgetTotals extends React.Component {
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     const { match: { params: { budgetId } } } = this.props;
     const { getTotals } = this.props;
-    axios({ method: 'get', url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals`, headers: { Authorization: token } })
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
+    axios({ method: 'get', url: `${apiUrl}api/v1/budgets/${budgetId}/budget_totals`, headers: { Authorization: token } })
       .then(response => {
         getTotals(response.data);
       });
@@ -19,6 +20,7 @@ class BudgetTotals extends React.Component {
     const token = `Bearer ${localStorage.getItem('jwt')}`;
     const { budgetTotals } = this.props;
     const { match: { params: { budgetId } } } = this.props;
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
     return (
       <div className="totals">
         <div className="header">
@@ -88,7 +90,7 @@ class BudgetTotals extends React.Component {
                   type="submit"
                   onClick={() => axios({
                     method: 'delete',
-                    url: `http://localhost:3001/api/v1/budgets/${budgetId}/budget_totals/${budgetTotal.id}`,
+                    url: `${apiUrl}api/v1/budgets/${budgetId}/budget_totals/${budgetTotal.id}`,
                     headers: { Authorization: token },
                   })
                     .then(() => window.location.reload(false))}

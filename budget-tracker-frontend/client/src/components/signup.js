@@ -46,12 +46,13 @@ class Signup extends React.Component {
     const user = { user: this.state };
 
     const request = { auth: { email, password } };
-    post('http://localhost:3001/api/v1/users', user)
+    const apiUrl = 'https://king-budget-api.herokuapp.com/';
+    post(`${apiUrl}api/v1/users`, user)
       .then(response => {
         localStorage.setItem('jwt', response.data.jwt);
         getUser(name, email);
         loggedIn(true);
-        return post('http://localhost:3001/login', request);
+        return post(`${apiUrl}login`, request);
       });
     history.push('/budgets');
 
