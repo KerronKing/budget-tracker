@@ -70,7 +70,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div className="login-form">
+      <div className="app-form">
         <h2 className="logo">Budget Tracker</h2>
         <form onSubmit={this.handleSubmit}>
           <input

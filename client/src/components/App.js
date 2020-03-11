@@ -33,7 +33,7 @@ const App = ({ userStatus }) => {
         <Route exact path="/user" component={UserProfile} />
         <Route exact path="/budgets" component={UserBudgets} />
         <Route exact path="/budgets/:id" component={Budget} />
-        <Route exact path="/budgets/new" component={NewBudget} />
+        <Route exact path="/newBudget" component={NewBudget} />
         <Route exact path="/budgets/:budgetId/budgetTotals/new" component={NewTotal} />
         <Route exact path="/budgets/:budgetId/budgetTotals" component={BudgetTotals} />
       </Switch>

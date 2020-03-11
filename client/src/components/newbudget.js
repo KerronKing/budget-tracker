@@ -74,8 +74,10 @@ class NewBudget extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="app-form">
+        <h2 className="logo">Budget Tracker</h2>
+        <h3>Create a Budget</h3>
+        <form onSubmit={this.handleSubmit} className="new-budget">
           <input
             type="text"
             onChange={this.handleChange}
