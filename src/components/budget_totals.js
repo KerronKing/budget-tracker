@@ -31,7 +31,7 @@ class BudgetTotals extends React.Component {
             <div key={budgetTotal.id} className="each-total">
               <div className="total-detail">
                 <p>
-                  Date:
+                  Date:&thinsp;
                   <span className="date-span">
                     {budgetTotal.date}
                   </span>
@@ -39,7 +39,7 @@ class BudgetTotals extends React.Component {
               </div>
               <div className="total-detail">
                 <p>
-                  Rent:
+                  Rent:&thinsp;
                   <span>
                     {budgetTotal.rent}
                   </span>
@@ -47,7 +47,7 @@ class BudgetTotals extends React.Component {
               </div>
               <div className="total-detail">
                 <p>
-                  Transport:
+                  Transport:&thinsp;
                   <span>
                     {budgetTotal.transport}
                   </span>
@@ -55,7 +55,7 @@ class BudgetTotals extends React.Component {
               </div>
               <div className="total-detail">
                 <p>
-                  Food:
+                  Food:&thinsp;
                   <span>
                     {budgetTotal.food}
                   </span>
@@ -63,7 +63,7 @@ class BudgetTotals extends React.Component {
               </div>
               <div className="total-detail">
                 <p>
-                  Entertainment:
+                  Entertainment:&thinsp;
                   <span>
                     {budgetTotal.entertainment}
                   </span>
@@ -71,7 +71,7 @@ class BudgetTotals extends React.Component {
               </div>
               <div className="total-detail">
                 <p>
-                  Utilities:
+                  Utilities:&thinsp;
                   <span>
                     {budgetTotal.utilities}
                   </span>
@@ -79,7 +79,7 @@ class BudgetTotals extends React.Component {
               </div>
               <div className="total-detail">
                 <p>
-                  Other expenses:
+                  Other expenses:&thinsp;
                   <span>
                     {budgetTotal.other}
                   </span>

@@ -115,6 +115,7 @@ body { font-family: Helvetica, sans-serif; }
   margin-bottom: 1rem;
 }
 .budget-name button {
+  background-color: inherit;
   border: none;
   color: #f2181f;
   padding: 0.3rem;
@@ -152,8 +153,8 @@ body { font-family: Helvetica, sans-serif; }
   background-color: rgba(151, 228, 148, 1);
 }
 .totals {
-  background-color: rgba(65, 181, 232, 1);
-  height: auto;
+  background-color: rgba(243, 244, 246, 1);
+  height: 100%;
   padding-top: 1rem;
   padding-bottom: 5rem;
 }
@@ -162,6 +163,11 @@ body { font-family: Helvetica, sans-serif; }
 }
 .totals form {
   padding-bottom: 5rem;
+}
+.totals-form {
+  background-color: rgba(65, 181, 232, 1);
+  padding-bottom: 6rem;
+  padding-top: 1rem;
 }
 
 /* User Profile */
@@ -181,11 +187,8 @@ body { font-family: Helvetica, sans-serif; }
   flex-direction: row;
 }
 .profile-name img {
-  border: 2px solid #676c74;
-  border-radius: 50%;
-  margin-left: 1rem;
+  margin-left: 2rem;
   margin-top: 0.7rem;
-  width: 3%;
 }
 .profile-name h3 {
   margin-left: 0.7rem;
@@ -193,9 +196,11 @@ body { font-family: Helvetica, sans-serif; }
 }
 .profile-email {
   color: rgba(65, 181, 232, 1);
-  font-size: 0.9rem;
-  position: relative;
-  right: 31.4rem;
+  float: left;
+  font-size: 80%;
+  line-height: 0.1;
+  margin-left: 5rem;
+  margin-top: 1rem;
 }
 
 /* Budgets Page */
@@ -242,6 +247,7 @@ body { font-family: Helvetica, sans-serif; }
   color: rgba(151, 228, 148, 1);
 }
 .total-detail button {
+  background-color: inherit;
   border: none;
   color: #f2181f;
   padding: 0.3rem;
@@ -275,4 +281,28 @@ body { font-family: Helvetica, sans-serif; }
   background-color: rgba(65, 181, 232, 1);
   color: white;
   font-weight: bold;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 800px) {
+  .total-detail {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    word-wrap: break-word;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    font-size: 80%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .total-detail {
+    font-size: 80%;
+  }
 }

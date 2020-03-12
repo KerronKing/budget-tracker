@@ -54,7 +54,7 @@ class NewTotal extends React.Component {
 
   render() {
     return (
-      <div className="totals">
+      <div className="totals-form">
         <h2>Budget Tracker</h2>
         <h5>Daily Expenditure</h5>
         <form onSubmit={this.handleSubmit}>

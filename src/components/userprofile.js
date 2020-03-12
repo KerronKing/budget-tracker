@@ -9,7 +9,7 @@ const UserProfile = ({ name, email }) => (
     </div>
     <div className="user-info">
       <div className="profile-name">
-        <img src="https://img.icons8.com/windows/32/000000/user.png" alt="user icon" />
+        <img src="https://img.icons8.com/ultraviolet/40/000000/star.png" alt="user icon" />
         <h3>{name}</h3>
       </div>
       <p className="profile-email">{email}</p>
