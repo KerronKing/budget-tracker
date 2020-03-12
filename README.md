@@ -4,12 +4,11 @@ The aim of this project was to build a tracking app using a REST Api and React f
 
 ## Live Demo
 
-Click [here]() to see a live demo.
+Click [here](https://kerronking.github.io/budget-tracker/) to see a live demo.
 
 ## Built With
 
 This app was built using the following:
-- Ruby on Rails
 - React
 - Redux
 - ES6
@@ -18,7 +17,7 @@ This app was built using the following:
 
 * Open the terminal and clone the repo
 * Launch the rails server (with the 'rails s' command)
-* cd into the 'client' folder and launch the UI with 'npm start'
+* launch the UI with 'npm start'
 
 ## Contributing
 
