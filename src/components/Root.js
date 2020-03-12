@@ -11,7 +11,7 @@ const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <App />
         </Router>
       </PersistGate>
