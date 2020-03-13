@@ -2,7 +2,7 @@
 
 The aim of this project was to build a tracking app using a REST Api and React front-end.
 
-![Budget-Tracker-App](public/BT Screencap.jpg)
+![Budget-Tracker-App](public/BTScreencap.jpg)
 
 ## Live Demo
 
