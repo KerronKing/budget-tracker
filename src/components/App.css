@@ -14,6 +14,11 @@
 .home {
   background-color: rgba(65, 181, 232, 1);
 }
+.welcome {
+  font-size: 1.5rem;
+  position: relative;
+  top: 15rem;
+}
 .hidden {
   height: 0px;
   visibility: hidden;

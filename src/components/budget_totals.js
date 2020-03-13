@@ -119,7 +119,13 @@ BudgetTotals.propTypes = {
   getTotals: PropTypes.func.isRequired,
   budgetTotals: PropTypes.arrayOf(
     PropTypes.shape({
+      date: PropTypes.string.isRequired,
       rent: PropTypes.number.isRequired,
+      transport: PropTypes.number.isRequired,
+      food: PropTypes.number.isRequired,
+      entertainment: PropTypes.number.isRequired,
+      utilities: PropTypes.number.isRequired,
+      other: PropTypes.number.isRequired,
     }),
   ),
 };

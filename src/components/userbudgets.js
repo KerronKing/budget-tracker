@@ -70,6 +70,10 @@ UserBudgets.propTypes = {
   getBudgets: PropTypes.func.isRequired,
   budgets: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      startdate: PropTypes.string.isRequired,
+      enddate: PropTypes.string.isRequired,
       income: PropTypes.number.isRequired,
     }),
   ),

@@ -72,7 +72,13 @@ const mapDispatchToProps = dispatch => ({
 Budget.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
   getBudget: PropTypes.func.isRequired,
-  budget: PropTypes.instanceOf(Object),
+  budget: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    startdate: PropTypes.string.isRequired,
+    enddate: PropTypes.string.isRequired,
+    income: PropTypes.number.isRequired,
+  }),
 };
 
 Budget.defaultProps = {
