@@ -36,11 +36,11 @@ class Budget extends React.Component {
           <div className="details-wrapper">
             <div className="b-detail">
               <p className="desc">Start Date:</p>
-              <p className="b-content">{budget.start_date}</p>
+              <p className="b-content">{budget.startdate}</p>
             </div>
             <div className="b-detail">
               <p className="desc">End Date:</p>
-              <p className="b-content">{budget.end_date}</p>
+              <p className="b-content">{budget.enddate}</p>
             </div>
             <div className="b-detail">
               <p className="desc">Income:</p>

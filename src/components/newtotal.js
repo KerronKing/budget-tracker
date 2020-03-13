@@ -5,8 +5,51 @@ import axios from 'axios';
 class NewTotal extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      date: '',
+      rent: 0,
+      transport: 0,
+      food: 0,
+      entertainment: 0,
+      utilities: 0,
+      other: 0,
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    const { value, id } = e.target;
+    if (id === 'date') {
+      this.setState({
+        date: value,
+      });
+    } else if (id === 'rent') {
+      this.setState({
+        rent: value,
+      });
+    } else if (id === 'transport') {
+      this.setState({
+        transport: value,
+      });
+    } else if (id === 'food') {
+      this.setState({
+        food: value,
+      });
+    } else if (id === 'entertainment') {
+      this.setState({
+        entertainment: value,
+      });
+    } else if (id === 'utilities') {
+      this.setState({
+        utilities: value,
+      });
+    } else {
+      this.setState({
+        other: value,
+      });
+    }
   }
 
   handleSubmit(e) {
@@ -22,15 +65,7 @@ class NewTotal extends React.Component {
     const { match: { params: { budgetId } } } = this.props;
     const { history } = this.props;
     const total = {
-      budget_total: {
-        date: date.value,
-        rent: rent.value,
-        transport: transport.value,
-        food: food.value,
-        entertainment: entertainment.value,
-        utilities: utilities.value,
-        other: other.value,
-      },
+      budget_total: this.state,
     };
 
     const apiUrl = 'https://king-budget-api.herokuapp.com/';
@@ -43,6 +78,16 @@ class NewTotal extends React.Component {
     })
       .then(() => history.push('/budgets'));
 
+    this.setState({
+      date: '',
+      rent: 0,
+      transport: 0,
+      food: 0,
+      entertainment: 0,
+      utilities: 0,
+      other: 0,
+    });
+
     date.value = '';
     rent.value = '';
     transport.value = '';
@@ -53,6 +98,16 @@ class NewTotal extends React.Component {
   }
 
   render() {
+    const {
+      date,
+      rent,
+      transport,
+      food,
+      entertainment,
+      utilities,
+      other,
+    } = this.state;
+
     return (
       <div className="totals-form">
         <h2>Budget Tracker</h2>
@@ -60,6 +115,7 @@ class NewTotal extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="date"
+            name={date}
             className="user-input"
             id="date"
             placeholder="Enter the date for this entry"
@@ -68,6 +124,7 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
+            name={rent}
             className="user-input"
             id="rent"
             placeholder="Enter rent payment"
@@ -76,6 +133,7 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
+            name={transport}
             className="user-input"
             id="transport"
             placeholder="Enter transport total"
@@ -84,6 +142,7 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
+            name={food}
             className="user-input"
             id="food"
             placeholder="Enter food total"
@@ -92,6 +151,7 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
+            name={entertainment}
             className="user-input"
             id="entertainment"
             placeholder="Enter entertainment total"
@@ -100,6 +160,7 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
+            name={utilities}
             className="user-input"
             id="utilities"
             placeholder="Enter utilities total"
@@ -108,6 +169,7 @@ class NewTotal extends React.Component {
           <br />
           <input
             type="number"
+            name={other}
             className="user-input"
             id="other"
             placeholder="Enter other expenses"
