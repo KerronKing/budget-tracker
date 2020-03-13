@@ -2,7 +2,9 @@
 
 The aim of this project was to build a tracking app using a REST Api and React front-end.
 
-![Budget-Tracker-App](public/BTScreencap.jpg){ style="display: block; margin: 0 auto" }
+<p align="center">
+  <img src="public/BTScreencap.jpg">
+</p>
 
 ## Live Demo
 
