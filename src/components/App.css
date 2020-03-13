@@ -305,4 +305,17 @@
   .total-detail {
     font-size: 80%;
   }
+  .single-budgets {
+    width: 98%;
+  }
+  .header {
+    margin-top: -1rem;
+  }
+  .app-btn {
+    margin-bottom: 2rem;
+    width: 50%;
+  }
+  .totals-form h5 {
+    margin-top: 2rem;
+  }
 }
