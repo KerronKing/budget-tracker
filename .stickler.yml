@@ -1,6 +1,6 @@
 linters:
   eslint:
-    config: 'client/.eslintrc.json'
+    config: './.eslintrc.json'
   rubocop:
     display_cop_names: true
     config: './rubocop.yml'
@@ -14,3 +14,4 @@ files:
     - "Rakefile"
     - "*/rails_helper.rb"
     - "spec/*"
+    - "build/*"

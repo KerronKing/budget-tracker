@@ -2,23 +2,41 @@
 
 The aim of this project was to build a tracking app using a REST Api and React front-end.
 
+<p align="center">
+  <img src="public/BTScreencap.jpg">
+</p>
+
 ## Live Demo
 
-Click [here]() to see a live demo.
+Click [here](https://king-budget-tracker.herokuapp.com/) to see a live demo.
 
 ## Built With
 
 This app was built using the following:
-- Ruby on Rails
 - React
 - Redux
 - ES6
+- NPM
+- Heroku
 
 ## Getting Started
 
-* Open the terminal and clone the repo
-* Launch the rails server (with the 'rails s' command)
-* cd into the 'client' folder and launch the UI with 'npm start'
+* Click the live link provided or clone the repo using the following link:
+
+```
+https://github.com/KerronKing/budget-tracker.git
+```
+
+* cd into the project directory and run 'npm start'
+
+## Using the App
+
+* Login or signup using links provided.
+* Use the footer to navigate across the app.
+* Click 'Create new budget' to create a new budget.
+* Click on the budget title, once create, to see your budget's details.
+* Click 'New total' to add daily expenditure info.
+* Click 'Totals' to see that budget's daily expenditure totals.
 
 ## Contributing
 
