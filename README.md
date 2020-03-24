@@ -18,6 +18,7 @@ This app was built using the following:
 - ES6
 - NPM
 - Heroku
+- Jest
 
 ## Getting Started
 
@@ -27,7 +28,11 @@ This app was built using the following:
 https://github.com/KerronKing/budget-tracker.git
 ```
 
-* cd into the project directory and run 'npm start'
+* cd into the project directory and run the following command:
+
+```
+npm start
+```
 
 ## Using the App
 
@@ -37,6 +42,14 @@ https://github.com/KerronKing/budget-tracker.git
 * Click on the budget title, once create, to see your budget's details.
 * Click 'New total' to add daily expenditure info.
 * Click 'Totals' to see that budget's daily expenditure totals.
+
+## Testing
+
+* cd into the project directory and run the following command:
+
+```
+npm test
+```
 
 ## Contributing
 
