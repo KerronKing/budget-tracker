@@ -40,6 +40,7 @@ class Login extends React.Component {
     const nameLogin = document.getElementById('nameInput');
     const emailLogin = document.getElementById('emailInput');
     const passwordLogin = document.getElementById('password');
+    const flash = document.getElementById('flash');
 
     const { name, email, password } = this.state;
     const { getUser, loggedIn, history } = this.props;
@@ -52,11 +53,16 @@ class Login extends React.Component {
     const apiUrl = 'https://king-budget-api.herokuapp.com/';
     post(`${apiUrl}login`, request)
       .then(response => {
+        if (response.status < 300) {
+          getUser(name, email);
+          loggedIn(true);
+        }
         localStorage.setItem('jwt', response.data.jwt);
         history.push('/budgets');
+      })
+      .catch(() => {
+        flash.classList.replace('hidden', 'visible');
       });
-    getUser(name, email);
-    loggedIn(true);
     this.setState({
       name: '',
       email: '',
@@ -98,6 +104,7 @@ class Login extends React.Component {
           <br />
           <button type="submit" className="app-btn">Login</button>
         </form>
+        <p id="flash" className="hidden">Please enter authorized credentials</p>
       </div>
     );
   }
