@@ -17,7 +17,11 @@
   word-wrap: break-word;
 }
 .home {
-  background-color: rgba(65, 181, 232, 1);
+  background-image: url('../main.jpg'), linear-gradient(rgba(65, 181, 232, 0.1), rgba(65, 181, 232, 1));
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 @keyframes appear {
   from { opacity: 0; }
@@ -62,12 +66,18 @@
   text-decoration: none;
 }
 .app-form {
-  background-color: rgba(65, 181, 232, 1);
+  background-image: url('../bg.jpg'), linear-gradient(rgba(65, 181, 232, 0.1), rgba(65, 181, 232, 1));
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 }
 .app-form h3 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
+}
+.app-form form {
+  margin: 0 auto;
 }
 .logo {
   font-size: 2.5rem;
@@ -78,24 +88,26 @@
   padding-bottom: 6rem;
 }
 .user-input {
-  background-color: rgba(65, 181, 232, 1);
-  border: 1px solid white;
-  border-radius: 7px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
   color: white;
-  margin-bottom: 2rem;
-  padding: 1.2rem;
+  margin-bottom: 4rem;
+  margin-left: 1rem;
+  padding: 0.7rem;
+  width: 50%;
 }
 .user-input::placeholder {
   color: white;
-  opacity: 0.7;
+  font-weight: bold;
 }
 .app-btn {
   background-color: rgba(151, 228, 148, 1);
   border: 1px solid rgba(151, 228, 148, 1);
   border-radius: 7px;
   color: white;
+  font-weight: bold;
   padding: 0.8rem;
-  width: 15%;
 }
 .budgets {
   background-color: rgba(243, 244, 246, 1);
@@ -320,6 +332,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .user-input {
+    width: 80%;
+  }
   .total-detail {
     font-size: 80%;
   }
@@ -331,7 +346,6 @@
   }
   .app-btn {
     margin-bottom: 2rem;
-    width: 50%;
   }
   .totals-form h5 {
     margin-top: 2rem;

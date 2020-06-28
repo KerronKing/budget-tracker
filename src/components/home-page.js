@@ -7,7 +7,7 @@ const Homepage = ({ userStatus, name }) => {
   let page;
   if (userStatus) {
     page = (
-      <div>
+      <div className="home">
         <h1>Budget Tracker</h1>
         <div className="welcome">
           Welcome back&thinsp;
@@ -17,7 +17,7 @@ const Homepage = ({ userStatus, name }) => {
     );
   } else {
     page = (
-      <div>
+      <div className="home">
         <h1>Budget Tracker</h1>
         <div className="login-links">
           <div>
