@@ -109,10 +109,10 @@ class NewTotal extends React.Component {
     } = this.state;
 
     return (
-      <div className="totals-form">
+      <div className="app-form">
         <h2>Budget Tracker</h2>
         <h5>Daily Expenditure</h5>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="total-form">
           <input
             type="date"
             name={date}

@@ -71,6 +71,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  overflow: scroll;
 }
 .app-form h3 {
   font-size: 1.5rem;
@@ -194,10 +195,8 @@
 .totals form {
   padding-bottom: 5rem;
 }
-.totals-form {
-  background-color: rgba(65, 181, 232, 1);
-  padding-bottom: 6rem;
-  padding-top: 1rem;
+.total-form {
+  padding-bottom: 8rem;
 }
 
 /* User Profile */

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Doughnut } from 'react-chartjs-2';
 import { getTotals } from '../actions/index';
 
 class BudgetTotals extends React.Component {
