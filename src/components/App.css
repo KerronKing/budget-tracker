@@ -252,23 +252,21 @@
   height: auto;
   padding: 2rem;
 }
-.each-total {
-  border: 2px solid #ecebec;
-  border-radius: 7px;
-  color: #475e77;
+.total-drop { 
+  color: grey; 
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  width: 80%;
+  justify-content: space-between;
+}
+.total-drop button {
+  border-radius: 5px;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
 }
 .total-detail {
   background-color: white;
   border: 1px solid #ecebec;
   padding: 1rem;
+  margin: 0 auto;
   margin-bottom: 1rem;
   width: 30%;
 }
