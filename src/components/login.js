@@ -40,6 +40,7 @@ class Login extends React.Component {
     const nameLogin = document.getElementById('nameInput');
     const emailLogin = document.getElementById('emailInput');
     const passwordLogin = document.getElementById('password');
+    const flash = document.getElementById('flash');
 
     const { name, email, password } = this.state;
     const { getUser, loggedIn, history } = this.props;
@@ -52,11 +53,16 @@ class Login extends React.Component {
     const apiUrl = 'https://king-budget-api.herokuapp.com/';
     post(`${apiUrl}login`, request)
       .then(response => {
+        if (response.status < 300) {
+          getUser(name, email);
+          loggedIn(true);
+        }
         localStorage.setItem('jwt', response.data.jwt);
         history.push('/budgets');
+      })
+      .catch(() => {
+        flash.classList.replace('hidden', 'visible');
       });
-    getUser(name, email);
-    loggedIn(true);
     this.setState({
       name: '',
       email: '',
@@ -69,6 +75,7 @@ class Login extends React.Component {
       <div className="app-form">
         <h2 className="logo">Budget Tracker</h2>
         <form onSubmit={this.handleSubmit}>
+          <img src="https://img.icons8.com/ultraviolet/25/000000/person-male.png" alt="name icon" />
           <input
             type="text"
             onChange={this.handleChange}
@@ -78,6 +85,7 @@ class Login extends React.Component {
             required
           />
           <br />
+          <img src="https://img.icons8.com/ultraviolet/25/000000/email-open.png" alt="email icon" />
           <input
             type="email"
             onChange={this.handleChange}
@@ -87,6 +95,7 @@ class Login extends React.Component {
             required
           />
           <br />
+          <img src="https://img.icons8.com/ultraviolet/25/000000/lock.png" alt="password icon" />
           <input
             type="text"
             onChange={this.handleChange}
@@ -96,8 +105,9 @@ class Login extends React.Component {
             required
           />
           <br />
-          <button type="submit" className="app-btn">Login</button>
+          <button type="submit" className="app-btn col-3">Login</button>
         </form>
+        <p id="flash" className="hidden">Please enter authorized credentials</p>
       </div>
     );
   }

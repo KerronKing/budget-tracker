@@ -109,15 +109,16 @@ class NewTotal extends React.Component {
     } = this.state;
 
     return (
-      <div className="totals-form">
+      <div className="app-form">
         <h2>Budget Tracker</h2>
         <h5>Daily Expenditure</h5>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="total-form">
           <input
             type="date"
             name={date}
             className="user-input"
             id="date"
+            onChange={this.handleChange}
             placeholder="Enter the date for this entry"
             required
           />
@@ -127,6 +128,7 @@ class NewTotal extends React.Component {
             name={rent}
             className="user-input"
             id="rent"
+            onChange={this.handleChange}
             placeholder="Enter rent payment"
             required
           />
@@ -136,6 +138,7 @@ class NewTotal extends React.Component {
             name={transport}
             className="user-input"
             id="transport"
+            onChange={this.handleChange}
             placeholder="Enter transport total"
             required
           />
@@ -145,6 +148,7 @@ class NewTotal extends React.Component {
             name={food}
             className="user-input"
             id="food"
+            onChange={this.handleChange}
             placeholder="Enter food total"
             required
           />
@@ -154,6 +158,7 @@ class NewTotal extends React.Component {
             name={entertainment}
             className="user-input"
             id="entertainment"
+            onChange={this.handleChange}
             placeholder="Enter entertainment total"
             required
           />
@@ -163,6 +168,7 @@ class NewTotal extends React.Component {
             name={utilities}
             className="user-input"
             id="utilities"
+            onChange={this.handleChange}
             placeholder="Enter utilities total"
             required
           />
@@ -172,6 +178,7 @@ class NewTotal extends React.Component {
             name={other}
             className="user-input"
             id="other"
+            onChange={this.handleChange}
             placeholder="Enter other expenses"
             required
           />

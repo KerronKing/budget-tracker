@@ -1,18 +1,31 @@
 .App {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   height: 100vh;
-  overflow: scroll;
   text-align: center;
 }
+@keyframes slide {
+  100% { left: 0; }
+}
 .App h1 {
+  animation: slide 2s forwards;
   font-size: 4rem;
+  font-weight: bold;
+  left: -100rem;
   position: relative;
-  top: 10rem;
+  top: 8rem;
   word-wrap: break-word;
 }
 .home {
-  background-color: rgba(65, 181, 232, 1);
+  background-image: url('../main.jpg'), linear-gradient(rgba(65, 181, 232, 0.1), rgba(65, 181, 232, 1));
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+@keyframes appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .welcome {
   font-size: 1.5rem;
@@ -28,33 +41,44 @@
   visibility: visible;
 }
 .login-links {
+  animation: appear 3s forwards;
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
   position: relative;
-  top: 14rem;
+  top: 8rem;
 }
 .login-links a {
-  border: 1px solid white;
-  border-radius: 7px;
+  border-bottom: 1px solid white;
   color: white;
-  padding: 1rem;
+  font-weight: bold;
+  padding: 0.6rem;
   margin: 0 auto;
   margin-bottom: 1.5rem;
-  width: 25%; 
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  width: 20px; 
 }
 .login-links a:hover {
   background-color: white;
+  border-radius: 7px;
   color: rgb(49, 140, 179);
-  text-decoration: underline;
+  text-decoration: none;
 }
 .app-form {
-  background-color: rgba(65, 181, 232, 1);
+  background-image: url('../bg.jpg'), linear-gradient(rgba(65, 181, 232, 0.1), rgba(65, 181, 232, 1));
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
+  overflow: scroll;
 }
 .app-form h3 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
+}
+.app-form form {
+  margin: 0 auto;
 }
 .logo {
   font-size: 2.5rem;
@@ -65,24 +89,26 @@
   padding-bottom: 6rem;
 }
 .user-input {
-  background-color: rgba(65, 181, 232, 1);
-  border: 1px solid white;
-  border-radius: 7px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
   color: white;
-  margin-bottom: 2rem;
-  padding: 1.2rem;
+  margin-bottom: 4rem;
+  margin-left: 1rem;
+  padding: 0.7rem;
+  width: 50%;
 }
 .user-input::placeholder {
   color: white;
-  opacity: 0.7;
+  font-weight: bold;
 }
 .app-btn {
   background-color: rgba(151, 228, 148, 1);
   border: 1px solid rgba(151, 228, 148, 1);
   border-radius: 7px;
   color: white;
+  font-weight: bold;
   padding: 0.8rem;
-  width: 15%;
 }
 .budgets {
   background-color: rgba(243, 244, 246, 1);
@@ -169,10 +195,8 @@
 .totals form {
   padding-bottom: 5rem;
 }
-.totals-form {
-  background-color: rgba(65, 181, 232, 1);
-  padding-bottom: 6rem;
-  padding-top: 1rem;
+.total-form {
+  padding-bottom: 8rem;
 }
 
 /* User Profile */
@@ -228,23 +252,21 @@
   height: auto;
   padding: 2rem;
 }
-.each-total {
-  border: 2px solid #ecebec;
-  border-radius: 7px;
-  color: #475e77;
+.total-drop { 
+  color: grey; 
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  width: 80%;
+  justify-content: space-between;
+}
+.total-drop button {
+  border-radius: 5px;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
 }
 .total-detail {
   background-color: white;
   border: 1px solid #ecebec;
   padding: 1rem;
+  margin: 0 auto;
   margin-bottom: 1rem;
   width: 30%;
 }
@@ -307,6 +329,9 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .user-input {
+    width: 80%;
+  }
   .total-detail {
     font-size: 80%;
   }
@@ -318,7 +343,6 @@
   }
   .app-btn {
     margin-bottom: 2rem;
-    width: 50%;
   }
   .totals-form h5 {
     margin-top: 2rem;
