@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -24,7 +25,7 @@ class BudgetTotals extends React.Component {
   }
 
   graphToggle(id) {
-    const graph = document.getElementById(id)
+    const graph = document.getElementById(id);
     graph.classList.toggle('hidden');
   }
 

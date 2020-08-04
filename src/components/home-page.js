@@ -10,7 +10,7 @@ const Homepage = ({ userStatus, name }) => {
       <div className="home">
         <h1>Budget Tracker</h1>
         <div className="welcome">
-          Welcome back&thinsp;
+          Welcome back &thinsp;
           {name}
         </div>
       </div>
